@@ -1,0 +1,61 @@
+Neither CUDA nor MPS are available - defaulting to CPU. Note: This module is much faster with a GPU.
+D:\ColdLens\.venv\Lib\site-packages\torch\ao\nn\quantized\dynamic\modules\rnn.py:162: UserWarning: torch.quantize_per_tensor, torch.quantize_per_channel and other quantized tensor creation functions that produce tensors with dtype torch.quint8, torch.qint8, and torch.qint32 are deprecated and will be removed in a future PyTorch release. Please see https://github.com/pytorch/pytorch/issues/184982 for more information. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\quantized\Quantizer.cpp:116.)
+  w_ih = torch.quantize_per_tensor(
+50 images x 4 variants = up to 200 Groq API calls (fewer in practice - variants that produce identical OCR text share a cache entry).
+Pacing fresh (non-cached) calls 8s apart to stay under the account's 8000 tokens/minute limit. Worst case runtime: ~27 minutes.
+
+D:\ColdLens\.venv\Lib\site-packages\torch\utils\data\dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+[1/50] label_001 done (distortion=none sev=0) - 0 fresh calls, 4 cache hits so far
+[2/50] label_002 done (distortion=blur sev=1) - 2 fresh calls, 6 cache hits so far
+[3/50] label_003 done (distortion=blur sev=2) - 2 fresh calls, 10 cache hits so far
+[4/50] label_004 done (distortion=blur sev=3) - 5 fresh calls, 11 cache hits so far
+[5/50] label_005 done (distortion=rotation sev=1) - 5 fresh calls, 15 cache hits so far
+[6/50] label_006 done (distortion=rotation sev=2) - 6 fresh calls, 18 cache hits so far
+[7/50] label_007 done (distortion=rotation sev=3) - 7 fresh calls, 21 cache hits so far
+[8/50] label_008 done (distortion=perspective sev=1) - 7 fresh calls, 25 cache hits so far
+[9/50] label_009 done (distortion=perspective sev=2) - 7 fresh calls, 29 cache hits so far
+[10/50] label_010 done (distortion=perspective sev=3) - 7 fresh calls, 33 cache hits so far
+[11/50] label_011 done (distortion=glare sev=1) - 9 fresh calls, 35 cache hits so far
+[12/50] label_012 done (distortion=glare sev=2) - 9 fresh calls, 39 cache hits so far
+[13/50] label_013 done (distortion=glare sev=3) - 9 fresh calls, 43 cache hits so far
+[14/50] label_014 done (distortion=noise sev=1) - 9 fresh calls, 47 cache hits so far
+[15/50] label_015 done (distortion=noise sev=2) - 9 fresh calls, 51 cache hits so far
+[16/50] label_016 done (distortion=noise sev=3) - 9 fresh calls, 55 cache hits so far
+[17/50] label_017 done (distortion=low_light sev=1) - 13 fresh calls, 55 cache hits so far
+[18/50] label_018 done (distortion=low_light sev=2) - 16 fresh calls, 56 cache hits so far
+[19/50] label_019 done (distortion=low_light sev=3) - 19 fresh calls, 57 cache hits so far
+[20/50] label_020 done (distortion=none sev=0) - 23 fresh calls, 57 cache hits so far
+[21/50] label_021 done (distortion=blur sev=1) - 25 fresh calls, 59 cache hits so far
+[22/50] label_022 done (distortion=blur sev=2) - 29 fresh calls, 59 cache hits so far
+[23/50] label_023 done (distortion=blur sev=3) - 30 fresh calls, 62 cache hits so far
+[24/50] label_024 done (distortion=rotation sev=1) - 33 fresh calls, 63 cache hits so far
+[25/50] label_025 done (distortion=rotation sev=2) - 37 fresh calls, 63 cache hits so far
+[26/50] label_026 done (distortion=rotation sev=3) - 39 fresh calls, 65 cache hits so far
+[27/50] label_027 done (distortion=perspective sev=1) - 41 fresh calls, 67 cache hits so far
+[28/50] label_028 done (distortion=perspective sev=2) - 44 fresh calls, 68 cache hits so far
+[29/50] label_029 done (distortion=perspective sev=3) - 48 fresh calls, 68 cache hits so far
+[30/50] label_030 done (distortion=glare sev=1) - 50 fresh calls, 70 cache hits so far
+[31/50] label_031 done (distortion=glare sev=2) - 54 fresh calls, 70 cache hits so far
+[32/50] label_032 done (distortion=glare sev=3) - 56 fresh calls, 72 cache hits so far
+[33/50] label_033 done (distortion=noise sev=1) - 59 fresh calls, 73 cache hits so far
+[34/50] label_034 done (distortion=noise sev=2) - 62 fresh calls, 74 cache hits so far
+[35/50] label_035 done (distortion=noise sev=3) - 65 fresh calls, 75 cache hits so far
+[36/50] label_036 done (distortion=low_light sev=1) - 69 fresh calls, 75 cache hits so far
+[37/50] label_037 done (distortion=low_light sev=2) - 73 fresh calls, 75 cache hits so far
+[38/50] label_038 done (distortion=low_light sev=3) - 76 fresh calls, 76 cache hits so far
+[39/50] label_039 done (distortion=none sev=0) - 79 fresh calls, 77 cache hits so far
+[40/50] label_040 done (distortion=blur sev=1) - 81 fresh calls, 79 cache hits so far
+[41/50] label_041 done (distortion=blur sev=2) - 83 fresh calls, 81 cache hits so far
+[42/50] label_042 done (distortion=blur sev=3) - 87 fresh calls, 81 cache hits so far
+[43/50] label_043 done (distortion=rotation sev=1) - 91 fresh calls, 81 cache hits so far
+[44/50] label_044 done (distortion=rotation sev=2) - 95 fresh calls, 81 cache hits so far
+[45/50] label_045 done (distortion=rotation sev=3) - 99 fresh calls, 81 cache hits so far
+[46/50] label_046 done (distortion=perspective sev=1) - 100 fresh calls, 84 cache hits so far
+[47/50] label_047 done (distortion=perspective sev=2) - 103 fresh calls, 85 cache hits so far
+[48/50] label_048 done (distortion=perspective sev=3) - 107 fresh calls, 85 cache hits so far
+[49/50] label_049 done (distortion=glare sev=1) - 109 fresh calls, 87 cache hits so far
+[50/50] label_050 done (distortion=glare sev=2) - 111 fresh calls, 89 cache hits so far
+
+Done. 111 fresh Groq calls, 89 served from cache.
+Wrote D:\ColdLens\eval\results.csv and D:\ColdLens\eval\RESULTS.md

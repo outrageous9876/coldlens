@@ -17,6 +17,13 @@ app = FastAPI(title="ColdLens API")
 DEBUG_DIR = Path(__file__).resolve().parent.parent / "data" / "debug"
 STATIC_DIR = Path(__file__).resolve().parent / "static"
 
+# eval/RESULTS.md: full_no_threshold (grayscale + denoise + perspective
+# correction + deskew, no adaptive threshold) beat every other variant,
+# including the full pipeline - the threshold step hurt OCR as often as
+# it helped. Keep /preprocess defaulting to all steps (it's for debug
+# visualization of every step), but /analyze uses the measured-best set.
+ANALYZE_STEPS = ["grayscale", "denoise", "perspective_correction", "deskew"]
+
 
 @app.get("/")
 def index():
@@ -54,7 +61,7 @@ async def analyze_endpoint(file: UploadFile = File(...)):
     if image is None:
         return JSONResponse(status_code=400, content={"error": "could not decode image"})
 
-    final_image, _ = preprocess(image)
+    final_image, _ = preprocess(image, enabled_steps=ANALYZE_STEPS)
     ocr_result = run_ocr(final_image)
     fields = extract_fields(ocr_result["full_text"])
     flags = check_compliance(fields)

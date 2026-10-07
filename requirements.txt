@@ -3,6 +3,7 @@ uvicorn
 opencv-python
 easyocr
 Pillow
+rapidfuzz
 groq
 pydantic
 python-dotenv

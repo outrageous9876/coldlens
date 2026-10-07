@@ -11,15 +11,60 @@ import easyocr
 
 _reader = easyocr.Reader(["en"])
 
+MIN_CONFIDENCE = 0.3
+
+
+def _y_range(line):
+    ys = [p[1] for p in line["bbox"]]
+    return min(ys), max(ys)
+
+
+def _x_min(line):
+    return min(p[0] for p in line["bbox"])
+
+
+def _group_into_rows(lines):
+    """EasyOCR returns lines in roughly top-to-bottom detection order, but
+    doesn't guarantee that - and never sorts left-to-right within a line
+    of text. Group boxes into visual rows by vertical overlap (two boxes
+    are "the same row" if one's y-range covers at least half the other's
+    height), then sort each row left-to-right, so reading order matches
+    how a human would actually read the label."""
+    rows = []
+    for line in sorted(lines, key=lambda l: _y_range(l)[0]):
+        y0, y1 = _y_range(line)
+        height = y1 - y0
+        for row in rows:
+            overlap = min(y1, row["y1"]) - max(y0, row["y0"])
+            row_height = row["y1"] - row["y0"]
+            if overlap > 0.5 * min(height, row_height):
+                row["lines"].append(line)
+                row["y0"] = min(row["y0"], y0)
+                row["y1"] = max(row["y1"], y1)
+                break
+        else:
+            rows.append({"y0": y0, "y1": y1, "lines": [line]})
+
+    rows.sort(key=lambda r: r["y0"])
+    for row in rows:
+        row["lines"].sort(key=_x_min)
+    return [row["lines"] for row in rows]
+
 
 def run_ocr(image):
     """
     Run OCR on an image (numpy array - EasyOCR accepts grayscale or BGR).
 
+    Lines below MIN_CONFIDENCE are dropped (usually background texture or
+    compression noise misread as text, not real label content). Remaining
+    lines are reordered into natural reading order (top-to-bottom rows,
+    left-to-right within a row) before being joined into full_text.
+
     Returns:
         {
-            "full_text": str,  # every detected line, joined with newlines
-            "lines": [
+            "full_text": str,  # rows joined with newlines, words within a
+                                # row joined with spaces, in reading order
+            "lines": [          # same reading order as full_text
                 {"text": str, "confidence": float, "bbox": [[x, y], ...]},
                 ...
             ],
@@ -34,7 +79,11 @@ def run_ocr(image):
             "bbox": [[int(x), int(y)] for x, y in box],
         }
         for box, text, confidence in results
+        if confidence >= MIN_CONFIDENCE
     ]
-    full_text = "\n".join(line["text"] for line in lines)
 
-    return {"full_text": full_text, "lines": lines}
+    rows = _group_into_rows(lines)
+    ordered_lines = [line for row in rows for line in row]
+    full_text = "\n".join(" ".join(line["text"] for line in row) for row in rows)
+
+    return {"full_text": full_text, "lines": ordered_lines}
