@@ -29,8 +29,8 @@ MAX_RETRY_ATTEMPTS = 4
 _client = groq.Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 SYSTEM_PROMPT = """You extract structured data from OCR text scanned off a \
-medicine/vaccine/food label. The OCR text may contain misreads - use your \
-best judgement.
+medicine/vaccine/food label. The OCR text may contain misreads (e.g. O/0, \
+I/1 confusion) - use your best judgement.
 
 Return ONLY a JSON object with exactly these keys, no others:
   product (string or null) - the product/brand name
@@ -42,12 +42,6 @@ Return ONLY a JSON object with exactly these keys, no others:
 
 Rules:
 - If a field is not present in the text, use null. Never guess or invent a value.
-- OCR frequently confuses visually similar characters inside numbers: O/o for \
-0, S for 5, l/I for 1. When a token sits in a numeric context - a dose inside \
-the product name (e.g. "50Omg" is really "500mg"), a batch number, a date, or \
-a temperature - correct these letter-for-digit confusions. Do not "correct" \
-ordinary words this way, and never invent a value the text doesn't support - \
-this rule only fixes misread digits, it doesn't add missing ones.
 - Dates on labels come in many formats (MM/YYYY, MMM.YYYY, "EXP 12/26", \
 DD/MM/YYYY, "20/6/2020", etc). Normalize all dates to ISO YYYY-MM-DD.
 - If a date only gives month and year (no day), use the FIRST day of that \

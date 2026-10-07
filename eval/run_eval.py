@@ -51,7 +51,8 @@ VARIANTS = {
 }
 
 # Groq free-tier pacing: measured live from this account for GROQ_MODEL
-# (openai/gpt-oss-20b) at generation time: 1000 requests/day, 8000
+# (openai/gpt-oss-20b) at generation time: 1000 requests/day, 200000 tokens/day (the
+# real daily cap - only ~150-250 calls at ~700-1500 tokens each), 8000
 # tokens/minute. A low-reasoning-effort extraction call runs ~700-1500
 # tokens depending on how garbled the OCR text is, so 8s between calls
 # keeps sustained throughput comfortably under the TPM cap even on the

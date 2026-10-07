@@ -11,7 +11,10 @@ import easyocr
 
 _reader = easyocr.Reader(["en"])
 
-MIN_CONFIDENCE = 0.3
+# eval/ablation/ABLATION.md: the 0.3 confidence filter cost ~6 points
+# (it drops real but blurry date/temp text), and row grouping was neutral
+# to slightly worse. Both are off by default; raw EasyOCR order wins.
+MIN_CONFIDENCE = 0.0
 
 
 def _y_range(line):
@@ -51,19 +54,19 @@ def _group_into_rows(lines):
     return [row["lines"] for row in rows]
 
 
-def run_ocr(image):
+def run_ocr(image, min_confidence=MIN_CONFIDENCE, group_rows=False):
     """
     Run OCR on an image (numpy array - EasyOCR accepts grayscale or BGR).
 
-    Lines below MIN_CONFIDENCE are dropped (usually background texture or
-    compression noise misread as text, not real label content). Remaining
-    lines are reordered into natural reading order (top-to-bottom rows,
-    left-to-right within a row) before being joined into full_text.
+    Optional (both off by default, see MIN_CONFIDENCE): drop lines below
+    min_confidence, and with group_rows=True reorder boxes into visual rows
+    (top-to-bottom, left-to-right). With defaults, full_text is every
+    detected box in EasyOCR's order, one per line.
 
     Returns:
         {
-            "full_text": str,  # rows joined with newlines, words within a
-                                # row joined with spaces, in reading order
+            "full_text": str,  # rows joined with newlines (with defaults,
+                                # one detected box per row)
             "lines": [          # same reading order as full_text
                 {"text": str, "confidence": float, "bbox": [[x, y], ...]},
                 ...
@@ -79,10 +82,11 @@ def run_ocr(image):
             "bbox": [[int(x), int(y)] for x, y in box],
         }
         for box, text, confidence in results
-        if confidence >= MIN_CONFIDENCE
+        if confidence >= min_confidence
     ]
 
-    rows = _group_into_rows(lines)
+    # group_rows=False keeps EasyOCR's raw detection order, one box per line.
+    rows = _group_into_rows(lines) if group_rows else [[line] for line in lines]
     ordered_lines = [line for row in rows for line in row]
     full_text = "\n".join(" ".join(line["text"] for line in row) for row in rows)
 

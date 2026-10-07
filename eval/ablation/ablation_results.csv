@@ -1,0 +1,901 @@
+image_id,config,field,extracted,expected,match,match_fuzzy
+label_001,a_old_ocr,product,Amoxicillin 500mg Capsules,Amoxicillin 500mg Capsules,True,True
+label_001,a_old_ocr,batch_no,2117550,2117550,True,True
+label_001,a_old_ocr,mfg_date,2022-07-11,2022-07-11,True,True
+label_001,a_old_ocr,expiry_date,2024-09-30,2024-09-30,True,True
+label_001,a_old_ocr,storage_temp_min,-20.0,-20,True,True
+label_001,a_old_ocr,storage_temp_max,-20.0,-20,True,True
+label_002,a_old_ocr,product,Metformin 500mg Tablets,Metformin 500mg Tablets,True,True
+label_002,a_old_ocr,batch_no,1333204,1333204,True,True
+label_002,a_old_ocr,mfg_date,2022-09-13,2022-09-13,True,True
+label_002,a_old_ocr,expiry_date,2025-10-31,2025-10-31,True,True
+label_002,a_old_ocr,storage_temp_min,8.0,2,False,False
+label_002,a_old_ocr,storage_temp_max,20.0,8,False,False
+label_003,a_old_ocr,product,Ciprofloxacin 50mg Tablets,Ciprofloxacin 500mg Tablets,False,True
+label_003,a_old_ocr,batch_no,3676065,3676065,True,True
+label_003,a_old_ocr,mfg_date,2023-05-01,2023-05-01,True,True
+label_003,a_old_ocr,expiry_date,2025-04-30,2025-04-30,True,True
+label_003,a_old_ocr,storage_temp_min,8.0,2,False,False
+label_003,a_old_ocr,storage_temp_max,28.0,8,False,False
+label_004,a_old_ocr,product,Doxycycline 10mg Capsules,Doxycycline 100mg Capsules,False,True
+label_004,a_old_ocr,batch_no,00745J9,DD74539,False,False
+label_004,a_old_ocr,mfg_date,2022-10-01,2022-10-01,True,True
+label_004,a_old_ocr,expiry_date,2026-08-19,2026-08-19,True,True
+label_004,a_old_ocr,storage_temp_min,,,True,True
+label_004,a_old_ocr,storage_temp_max,25.0,25,True,True
+label_005,a_old_ocr,product,Multivitamin Syrup,Multivitamin Syrup,True,True
+label_005,a_old_ocr,batch_no,CL07797,CL07797,True,True
+label_005,a_old_ocr,mfg_date,2024-11-01,2024-11-01,True,True
+label_005,a_old_ocr,expiry_date,2026-06-30,2026-06-30,True,True
+label_005,a_old_ocr,storage_temp_min,,,True,True
+label_005,a_old_ocr,storage_temp_max,,,True,True
+label_006,a_old_ocr,product,COVAXIN,COVAXIN Vaccine Vial,False,False
+label_006,a_old_ocr,batch_no,890407,890407,True,True
+label_006,a_old_ocr,mfg_date,2026-04-18,2026-04-18,True,True
+label_006,a_old_ocr,expiry_date,2027-12-31,2027-12-31,True,True
+label_006,a_old_ocr,storage_temp_min,15.0,15,True,True
+label_006,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_007,a_old_ocr,product,Amoxicillin 500mg Capsules,Amoxicillin 500mg Capsules,True,True
+label_007,a_old_ocr,batch_no,005507,005507,True,True
+label_007,a_old_ocr,mfg_date,2022-01-05,2022-05-01,False,False
+label_007,a_old_ocr,expiry_date,2024-11-08,2024-08-11,False,False
+label_007,a_old_ocr,storage_temp_min,8.0,2,False,False
+label_007,a_old_ocr,storage_temp_max,29.0,8,False,False
+label_008,a_old_ocr,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_008,a_old_ocr,batch_no,MSO781,MS0781,False,False
+label_008,a_old_ocr,mfg_date,2023-01-01,2023-01-01,True,True
+label_008,a_old_ocr,expiry_date,2025-02-28,2025-02-28,True,True
+label_008,a_old_ocr,storage_temp_min,,,True,True
+label_008,a_old_ocr,storage_temp_max,30.8,30,False,False
+label_009,a_old_ocr,product,Ranitidine 150mg Tablets,Ranitidine 150mg Tablets,True,True
+label_009,a_old_ocr,batch_no,SS12955,SS12955,True,True
+label_009,a_old_ocr,mfg_date,2026-03-12,2026-03-12,True,True
+label_009,a_old_ocr,expiry_date,2028-12-13,2028-12-13,True,True
+label_009,a_old_ocr,storage_temp_min,-20.0,-20,True,True
+label_009,a_old_ocr,storage_temp_max,-20.0,-20,True,True
+label_010,a_old_ocr,product,Cough Syrup DX,Cough Syrup DX,True,True
+label_010,a_old_ocr,batch_no,3623704,3623704,True,True
+label_010,a_old_ocr,mfg_date,2025-02-27,2025-02-27,True,True
+label_010,a_old_ocr,expiry_date,2026-09-30,2026-09-30,True,True
+label_010,a_old_ocr,storage_temp_min,,,True,True
+label_010,a_old_ocr,storage_temp_max,30.9,30,False,False
+label_011,a_old_ocr,product,Multivitamin Syrup,Multivitamin Syrup,True,True
+label_011,a_old_ocr,batch_no,2236852,2236852,True,True
+label_011,a_old_ocr,mfg_date,,2022-04-01,False,False
+label_011,a_old_ocr,expiry_date,2022-04-30,2023-10-31,False,False
+label_011,a_old_ocr,storage_temp_min,2.0,2,True,True
+label_011,a_old_ocr,storage_temp_max,8.0,8,True,True
+label_012,a_old_ocr,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_012,a_old_ocr,batch_no,TPBN78,TPBN78,True,True
+label_012,a_old_ocr,mfg_date,2022-03-23,2022-03-23,True,True
+label_012,a_old_ocr,expiry_date,2025-03-31,2025-03-31,True,True
+label_012,a_old_ocr,storage_temp_min,,,True,True
+label_012,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_013,a_old_ocr,product,Amoxicillin,Amoxicillin 500mg Capsules,False,False
+label_013,a_old_ocr,batch_no,W1938,W1938,True,True
+label_013,a_old_ocr,mfg_date,2023-12-04,2023-04-12,False,False
+label_013,a_old_ocr,expiry_date,,2025-07-31,False,False
+label_013,a_old_ocr,storage_temp_min,,,True,True
+label_013,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_014,a_old_ocr,product,Azithromycin 250mg Tablets,Azithromycin 250mg Tablets,True,True
+label_014,a_old_ocr,batch_no,3749181,3749181,True,True
+label_014,a_old_ocr,mfg_date,2022-04-01,2022-04-01,True,True
+label_014,a_old_ocr,expiry_date,2025-09-30,2025-09-30,True,True
+label_014,a_old_ocr,storage_temp_min,-20.0,-20,True,True
+label_014,a_old_ocr,storage_temp_max,-20.0,-20,True,True
+label_015,a_old_ocr,product,Multivitamin Syrup,Multivitamin Syrup,True,True
+label_015,a_old_ocr,batch_no,496963,496963,True,True
+label_015,a_old_ocr,mfg_date,2025-01-01,2025-01-01,True,True
+label_015,a_old_ocr,expiry_date,2026-01-31,2026-01-31,True,True
+label_015,a_old_ocr,storage_temp_min,,,True,True
+label_015,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_016,a_old_ocr,product,Diclofenac Gel,Diclofenac Gel,True,True
+label_016,a_old_ocr,batch_no,WM31YI,WM31YI,True,True
+label_016,a_old_ocr,mfg_date,2023-12-02,2023-02-12,False,False
+label_016,a_old_ocr,expiry_date,2024-09-12,2024-12-09,False,False
+label_016,a_old_ocr,storage_temp_min,,,True,True
+label_016,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_017,a_old_ocr,product,,COVAXIN Vaccine Vial,False,False
+label_017,a_old_ocr,batch_no,,0284869,False,False
+label_017,a_old_ocr,mfg_date,,2025-05-01,False,False
+label_017,a_old_ocr,expiry_date,,2028-02-29,False,False
+label_017,a_old_ocr,storage_temp_min,,,True,True
+label_017,a_old_ocr,storage_temp_max,,,True,True
+label_018,a_old_ocr,product,COVAXIN,COVAXIN Vaccine Vial,False,False
+label_018,a_old_ocr,batch_no,CH38013,CH38013,True,True
+label_018,a_old_ocr,mfg_date,2022-09-11,2022-11-09,False,False
+label_018,a_old_ocr,expiry_date,2025-01-31,2025-01-31,True,True
+label_018,a_old_ocr,storage_temp_min,15.0,15,True,True
+label_018,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_019,a_old_ocr,product,Paracetamol 100mg Tablets,Paracetamol 500mg Tablets,False,True
+label_019,a_old_ocr,batch_no,TW57784,TW57784,True,True
+label_019,a_old_ocr,mfg_date,2023-07-01,2023-07-01,True,True
+label_019,a_old_ocr,expiry_date,2026-12-21,2026-12-21,True,True
+label_019,a_old_ocr,storage_temp_min,15.0,15,True,True
+label_019,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_020,a_old_ocr,product,,Pantoprazole 40mg Tablets,False,False
+label_020,a_old_ocr,batch_no,,FI29484,False,False
+label_020,a_old_ocr,mfg_date,,2026-03-01,False,False
+label_020,a_old_ocr,expiry_date,,2027-06-29,False,False
+label_020,a_old_ocr,storage_temp_min,,,True,True
+label_020,a_old_ocr,storage_temp_max,,,True,True
+label_021,a_old_ocr,product,Ranitidine 150mg Tablets,Ranitidine 150mg Tablets,True,True
+label_021,a_old_ocr,batch_no,JNV8Z2,JNV8Z2,True,True
+label_021,a_old_ocr,mfg_date,2022-02-12,2022-12-02,False,False
+label_021,a_old_ocr,expiry_date,2025-08-31,2025-08-31,True,True
+label_021,a_old_ocr,storage_temp_min,,,True,True
+label_021,a_old_ocr,storage_temp_max,25.0,25,True,True
+label_022,a_old_ocr,product,,Azithromycin 250mg Tablets,False,False
+label_022,a_old_ocr,batch_no,,RB04443,False,False
+label_022,a_old_ocr,mfg_date,,2024-07-01,False,False
+label_022,a_old_ocr,expiry_date,,2026-06-08,False,False
+label_022,a_old_ocr,storage_temp_min,,,True,True
+label_022,a_old_ocr,storage_temp_max,,,True,True
+label_023,a_old_ocr,product,,COVAXIN Vaccine Vial,False,False
+label_023,a_old_ocr,batch_no,,IM12738,False,False
+label_023,a_old_ocr,mfg_date,,2025-12-01,False,False
+label_023,a_old_ocr,expiry_date,,2028-06-24,False,False
+label_023,a_old_ocr,storage_temp_min,,-20,False,False
+label_023,a_old_ocr,storage_temp_max,,-20,False,False
+label_024,a_old_ocr,product,COVAXIN,COVAXIN Vaccine Vial,False,False
+label_024,a_old_ocr,batch_no,H45473,H45473,True,True
+label_024,a_old_ocr,mfg_date,2025-12-01,2025-12-01,True,True
+label_024,a_old_ocr,expiry_date,2029-06-30,2029-06-30,True,True
+label_024,a_old_ocr,storage_temp_min,8.0,2,False,False
+label_024,a_old_ocr,storage_temp_max,20.0,8,False,False
+label_025,a_old_ocr,product,buprofen,Ibuprofen 400mg Tablets,False,False
+label_025,a_old_ocr,batch_no,1052956,1052956,True,True
+label_025,a_old_ocr,mfg_date,2022-09-16,2022-09-16,True,True
+label_025,a_old_ocr,expiry_date,2026-06-17,2026-06-17,True,True
+label_025,a_old_ocr,storage_temp_min,-20.0,-20,True,True
+label_025,a_old_ocr,storage_temp_max,-20.0,-20,True,True
+label_026,a_old_ocr,product,Uimin,Metformin 500mg Tablets,False,False
+label_026,a_old_ocr,batch_no,0254567,0254567,True,True
+label_026,a_old_ocr,mfg_date,2024-02-01,2024-02-01,True,True
+label_026,a_old_ocr,expiry_date,2027-08-31,2027-08-31,True,True
+label_026,a_old_ocr,storage_temp_min,-20.0,-20,True,True
+label_026,a_old_ocr,storage_temp_max,-20.0,-20,True,True
+label_027,a_old_ocr,product,ORS Sachet,ORS Sachet,True,True
+label_027,a_old_ocr,batch_no,4522774,4522774,True,True
+label_027,a_old_ocr,mfg_date,2025-11-01,2025-11-01,True,True
+label_027,a_old_ocr,expiry_date,2026-02-28,2028-02-29,False,False
+label_027,a_old_ocr,storage_temp_min,-20.0,-20,True,True
+label_027,a_old_ocr,storage_temp_max,-20.0,-20,True,True
+label_028,a_old_ocr,product,Zinc Dispersible Tablets,ORS + Zinc Dispersible Tablets,False,True
+label_028,a_old_ocr,batch_no,LJD84U,LJD84U,True,True
+label_028,a_old_ocr,mfg_date,2022-02-01,2022-02-01,True,True
+label_028,a_old_ocr,expiry_date,2024-08-16,2024-08-16,True,True
+label_028,a_old_ocr,storage_temp_min,,,True,True
+label_028,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_029,a_old_ocr,product,Cough Syrup DX,Cough Syrup DX,True,True
+label_029,a_old_ocr,batch_no,Du6541,DU6541,True,True
+label_029,a_old_ocr,mfg_date,,2024-01-01,False,False
+label_029,a_old_ocr,expiry_date,2024-01-31,2027-10-31,False,False
+label_029,a_old_ocr,storage_temp_min,,,True,True
+label_029,a_old_ocr,storage_temp_max,25.0,25,True,True
+label_030,a_old_ocr,product,Ibuprofen 400mg Tablets,Ibuprofen 400mg Tablets,True,True
+label_030,a_old_ocr,batch_no,ZORQQF,ZORQQF,True,True
+label_030,a_old_ocr,mfg_date,,2023-01-01,False,False
+label_030,a_old_ocr,expiry_date,2023-01-31,2026-12-01,False,False
+label_030,a_old_ocr,storage_temp_min,,,True,True
+label_030,a_old_ocr,storage_temp_max,25.8,25,False,False
+label_031,a_old_ocr,product,Vitamin D3 60K IU Capsules,Vitamin D3 60K IU Capsules,True,True
+label_031,a_old_ocr,batch_no,WZ5270,WZ5270,True,True
+label_031,a_old_ocr,mfg_date,,2026-03-01,False,False
+label_031,a_old_ocr,expiry_date,2029-10-31,2029-10-31,True,True
+label_031,a_old_ocr,storage_temp_min,15.0,15,True,True
+label_031,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_032,a_old_ocr,product,Cetirizine Syrup,Cetirizine Syrup,True,True
+label_032,a_old_ocr,batch_no,IS8883,IS8883,True,True
+label_032,a_old_ocr,mfg_date,2023-10-01,2023-10-01,True,True
+label_032,a_old_ocr,expiry_date,2027-06-07,2027-07-06,False,False
+label_032,a_old_ocr,storage_temp_min,-20.0,-20,True,True
+label_032,a_old_ocr,storage_temp_max,-20.0,-20,True,True
+label_033,a_old_ocr,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_033,a_old_ocr,batch_no,657108,G57108,False,False
+label_033,a_old_ocr,mfg_date,2025-06-01,2025-06-01,True,True
+label_033,a_old_ocr,expiry_date,2027-10-31,2027-10-31,True,True
+label_033,a_old_ocr,storage_temp_min,,,True,True
+label_033,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_034,a_old_ocr,product,Ibuprofen 400mg Tablets,Ibuprofen 400mg Tablets,True,True
+label_034,a_old_ocr,batch_no,8YQK94,8YQK94,True,True
+label_034,a_old_ocr,mfg_date,2022-08-01,2022-08-01,True,True
+label_034,a_old_ocr,expiry_date,2024-12-31,2024-12-31,True,True
+label_034,a_old_ocr,storage_temp_min,8.0,2,False,False
+label_034,a_old_ocr,storage_temp_max,28.0,8,False,False
+label_035,a_old_ocr,product,COVAXIN Vaccine Vial,COVAXIN Vaccine Vial,True,True
+label_035,a_old_ocr,batch_no,GJIIYE,GJ11YE,False,False
+label_035,a_old_ocr,mfg_date,2022-07-01,2022-07-01,True,True
+label_035,a_old_ocr,expiry_date,2023-10-31,2023-10-31,True,True
+label_035,a_old_ocr,storage_temp_min,,,True,True
+label_035,a_old_ocr,storage_temp_max,25.0,25,True,True
+label_036,a_old_ocr,product,Pantoprazole 40mg Tablets,Pantoprazole 40mg Tablets,True,True
+label_036,a_old_ocr,batch_no,9992884,9992884,True,True
+label_036,a_old_ocr,mfg_date,2022-06-04,2022-06-04,True,True
+label_036,a_old_ocr,expiry_date,2024-03-31,2024-03-31,True,True
+label_036,a_old_ocr,storage_temp_min,,,True,True
+label_036,a_old_ocr,storage_temp_max,,,True,True
+label_037,a_old_ocr,product,,Vitamin D3 60K IU Capsules,False,False
+label_037,a_old_ocr,batch_no,,7DIA5U,False,False
+label_037,a_old_ocr,mfg_date,,2025-06-01,False,False
+label_037,a_old_ocr,expiry_date,,2027-08-30,False,False
+label_037,a_old_ocr,storage_temp_min,,,True,True
+label_037,a_old_ocr,storage_temp_max,,,True,True
+label_038,a_old_ocr,product,Ranitidine 150mg Tablets,Ranitidine 150mg Tablets,True,True
+label_038,a_old_ocr,batch_no,PS68692,PS68692,True,True
+label_038,a_old_ocr,mfg_date,2025-11-14,2025-11-14,True,True
+label_038,a_old_ocr,expiry_date,2028-12-31,2028-12-31,True,True
+label_038,a_old_ocr,storage_temp_min,15.0,15,True,True
+label_038,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_039,a_old_ocr,product,Paracetamol 500mg Tablets,Paracetamol 500mg Tablets,True,True
+label_039,a_old_ocr,batch_no,2150722,2150722,True,True
+label_039,a_old_ocr,mfg_date,2023-04-23,2023-04-23,True,True
+label_039,a_old_ocr,expiry_date,2026-02-28,2026-02-28,True,True
+label_039,a_old_ocr,storage_temp_min,,,True,True
+label_039,a_old_ocr,storage_temp_max,25.0,25,True,True
+label_040,a_old_ocr,product,ORS Sachet,ORS Sachet,True,True
+label_040,a_old_ocr,batch_no,D57475,D57475,True,True
+label_040,a_old_ocr,mfg_date,2022-08-01,2022-08-01,True,True
+label_040,a_old_ocr,expiry_date,2026-02-22,2026-02-22,True,True
+label_040,a_old_ocr,storage_temp_min,-20.8,-20,False,False
+label_040,a_old_ocr,storage_temp_max,-20.8,-20,False,False
+label_041,a_old_ocr,product,Metformin 500mg Tablets,Metformin 500mg Tablets,True,True
+label_041,a_old_ocr,batch_no,265395,265395,True,True
+label_041,a_old_ocr,mfg_date,2024-07-01,2024-07-01,True,True
+label_041,a_old_ocr,expiry_date,2028-05-31,2028-05-31,True,True
+label_041,a_old_ocr,storage_temp_min,,,True,True
+label_041,a_old_ocr,storage_temp_max,25.0,25,True,True
+label_042,a_old_ocr,product,Pantoprwzole,Pantoprazole 40mg Tablets,False,False
+label_042,a_old_ocr,batch_no,LOI R0.007,R08007,False,False
+label_042,a_old_ocr,mfg_date,2022-09-01,2022-09-01,True,True
+label_042,a_old_ocr,expiry_date,2024-01-31,2024-01-31,True,True
+label_042,a_old_ocr,storage_temp_min,-20.0,-20,True,True
+label_042,a_old_ocr,storage_temp_max,-20.0,-20,True,True
+label_043,a_old_ocr,product,,Doxycycline 100mg Capsules,False,False
+label_043,a_old_ocr,batch_no,,351224,False,False
+label_043,a_old_ocr,mfg_date,,2025-02-01,False,False
+label_043,a_old_ocr,expiry_date,,2026-04-30,False,False
+label_043,a_old_ocr,storage_temp_min,,,True,True
+label_043,a_old_ocr,storage_temp_max,,,True,True
+label_044,a_old_ocr,product,Paracetamol 100mg Tablets,Paracetamol 500mg Tablets,False,True
+label_044,a_old_ocr,batch_no,341339,341339,True,True
+label_044,a_old_ocr,mfg_date,2025-06-05,2025-05-06,False,False
+label_044,a_old_ocr,expiry_date,2026-10-26,2026-10-26,True,True
+label_044,a_old_ocr,storage_temp_min,,,True,True
+label_044,a_old_ocr,storage_temp_max,30.9,30,False,False
+label_045,a_old_ocr,product,Ibuprofen 400mg Tablets,Ibuprofen 400mg Tablets,True,True
+label_045,a_old_ocr,batch_no,YRYBOV,YRYBOV,True,True
+label_045,a_old_ocr,mfg_date,2022-01-01,2022-01-01,True,True
+label_045,a_old_ocr,expiry_date,2024-09-03,2024-03-09,False,False
+label_045,a_old_ocr,storage_temp_min,,,True,True
+label_045,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_046,a_old_ocr,product,Cetirizine Syrup,Cetirizine Syrup,True,True
+label_046,a_old_ocr,batch_no,L98557,L98557,True,True
+label_046,a_old_ocr,mfg_date,2024-05-05,2024-05-05,True,True
+label_046,a_old_ocr,expiry_date,2026-12-31,2026-12-31,True,True
+label_046,a_old_ocr,storage_temp_min,,,True,True
+label_046,a_old_ocr,storage_temp_max,25.0,25,True,True
+label_047,a_old_ocr,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_047,a_old_ocr,batch_no,8XFDJG,8XFDJG,True,True
+label_047,a_old_ocr,mfg_date,2022-10-11,2022-11-10,False,False
+label_047,a_old_ocr,expiry_date,2024-04-30,2024-04-30,True,True
+label_047,a_old_ocr,storage_temp_min,15.8,15,False,False
+label_047,a_old_ocr,storage_temp_max,30.8,30,False,False
+label_048,a_old_ocr,product,Cetirizine Syrup,Cetirizine Syrup,True,True
+label_048,a_old_ocr,batch_no,VNU80B,VNU80B,True,True
+label_048,a_old_ocr,mfg_date,2025-03-01,2025-03-01,True,True
+label_048,a_old_ocr,expiry_date,2027-04-30,2027-04-30,True,True
+label_048,a_old_ocr,storage_temp_min,15.0,15,True,True
+label_048,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_049,a_old_ocr,product,Cough Syrup DX,Cough Syrup DX,True,True
+label_049,a_old_ocr,batch_no,0627698,0627698,True,True
+label_049,a_old_ocr,mfg_date,2023-11-01,2023-11-01,True,True
+label_049,a_old_ocr,expiry_date,2025-04-30,2025-04-30,True,True
+label_049,a_old_ocr,storage_temp_min,,,True,True
+label_049,a_old_ocr,storage_temp_max,30.0,30,True,True
+label_050,a_old_ocr,product,Diclofenac Gel,Diclofenac Gel,True,True
+label_050,a_old_ocr,batch_no,J9371,J9371,True,True
+label_050,a_old_ocr,mfg_date,2022-10-09,2022-10-09,True,True
+label_050,a_old_ocr,expiry_date,2024-08-31,2024-08-31,True,True
+label_050,a_old_ocr,storage_temp_min,,,True,True
+label_050,a_old_ocr,storage_temp_max,25.0,25,True,True
+label_001,b_rows_no_conf,product,Amoxicillin 500mg Capsules,Amoxicillin 500mg Capsules,True,True
+label_001,b_rows_no_conf,batch_no,2117550,2117550,True,True
+label_001,b_rows_no_conf,mfg_date,2022-11-07,2022-07-11,False,False
+label_001,b_rows_no_conf,expiry_date,2024-09-30,2024-09-30,True,True
+label_001,b_rows_no_conf,storage_temp_min,-20.0,-20,True,True
+label_001,b_rows_no_conf,storage_temp_max,-20.0,-20,True,True
+label_002,b_rows_no_conf,product,Metformin 500mg Tablets,Metformin 500mg Tablets,True,True
+label_002,b_rows_no_conf,batch_no,1333204,1333204,True,True
+label_002,b_rows_no_conf,mfg_date,2022-09-13,2022-09-13,True,True
+label_002,b_rows_no_conf,expiry_date,2025-10-31,2025-10-31,True,True
+label_002,b_rows_no_conf,storage_temp_min,8.0,2,False,False
+label_002,b_rows_no_conf,storage_temp_max,20.0,8,False,False
+label_003,b_rows_no_conf,product,Ciprofloxacin 0.5mg Tablets,Ciprofloxacin 500mg Tablets,False,True
+label_003,b_rows_no_conf,batch_no,3676065,3676065,True,True
+label_003,b_rows_no_conf,mfg_date,2023-05-01,2023-05-01,True,True
+label_003,b_rows_no_conf,expiry_date,2025-04-30,2025-04-30,True,True
+label_003,b_rows_no_conf,storage_temp_min,8.0,2,False,False
+label_003,b_rows_no_conf,storage_temp_max,28.0,8,False,False
+label_004,b_rows_no_conf,product,Doxycycline 10mg Capsules,Doxycycline 100mg Capsules,False,True
+label_004,b_rows_no_conf,batch_no,00745J9,DD74539,False,False
+label_004,b_rows_no_conf,mfg_date,2022-10-01,2022-10-01,True,True
+label_004,b_rows_no_conf,expiry_date,2026-08-19,2026-08-19,True,True
+label_004,b_rows_no_conf,storage_temp_min,,,True,True
+label_004,b_rows_no_conf,storage_temp_max,25.0,25,True,True
+label_005,b_rows_no_conf,product,Multivitamin Syrup,Multivitamin Syrup,True,True
+label_005,b_rows_no_conf,batch_no,CL07797,CL07797,True,True
+label_005,b_rows_no_conf,mfg_date,2024-11-01,2024-11-01,True,True
+label_005,b_rows_no_conf,expiry_date,2026-06-30,2026-06-30,True,True
+label_005,b_rows_no_conf,storage_temp_min,,,True,True
+label_005,b_rows_no_conf,storage_temp_max,,,True,True
+label_006,b_rows_no_conf,product,COVAXIN,COVAXIN Vaccine Vial,False,False
+label_006,b_rows_no_conf,batch_no,890407,890407,True,True
+label_006,b_rows_no_conf,mfg_date,2026-04-18,2026-04-18,True,True
+label_006,b_rows_no_conf,expiry_date,2027-12-31,2027-12-31,True,True
+label_006,b_rows_no_conf,storage_temp_min,15.0,15,True,True
+label_006,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_007,b_rows_no_conf,product,Amoxicillin 500mg Capsules,Amoxicillin 500mg Capsules,True,True
+label_007,b_rows_no_conf,batch_no,005507,005507,True,True
+label_007,b_rows_no_conf,mfg_date,2022-01-05,2022-05-01,False,False
+label_007,b_rows_no_conf,expiry_date,2024-11-08,2024-08-11,False,False
+label_007,b_rows_no_conf,storage_temp_min,8.0,2,False,False
+label_007,b_rows_no_conf,storage_temp_max,29.0,8,False,False
+label_008,b_rows_no_conf,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_008,b_rows_no_conf,batch_no,MSO781,MS0781,False,False
+label_008,b_rows_no_conf,mfg_date,2023-01-01,2023-01-01,True,True
+label_008,b_rows_no_conf,expiry_date,2025-02-28,2025-02-28,True,True
+label_008,b_rows_no_conf,storage_temp_min,,,True,True
+label_008,b_rows_no_conf,storage_temp_max,30.8,30,False,False
+label_009,b_rows_no_conf,product,Ranitidine 150mg Tablets,Ranitidine 150mg Tablets,True,True
+label_009,b_rows_no_conf,batch_no,SS12955,SS12955,True,True
+label_009,b_rows_no_conf,mfg_date,2026-03-12,2026-03-12,True,True
+label_009,b_rows_no_conf,expiry_date,2028-12-13,2028-12-13,True,True
+label_009,b_rows_no_conf,storage_temp_min,-20.0,-20,True,True
+label_009,b_rows_no_conf,storage_temp_max,-20.0,-20,True,True
+label_010,b_rows_no_conf,product,Cough Syrup DX,Cough Syrup DX,True,True
+label_010,b_rows_no_conf,batch_no,3623704,3623704,True,True
+label_010,b_rows_no_conf,mfg_date,2025-02-27,2025-02-27,True,True
+label_010,b_rows_no_conf,expiry_date,2026-09-30,2026-09-30,True,True
+label_010,b_rows_no_conf,storage_temp_min,,,True,True
+label_010,b_rows_no_conf,storage_temp_max,30.9,30,False,False
+label_011,b_rows_no_conf,product,Multivitamin Syrup,Multivitamin Syrup,True,True
+label_011,b_rows_no_conf,batch_no,2236852,2236852,True,True
+label_011,b_rows_no_conf,mfg_date,2022-04-01,2022-04-01,True,True
+label_011,b_rows_no_conf,expiry_date,2023-10-31,2023-10-31,True,True
+label_011,b_rows_no_conf,storage_temp_min,2.0,2,True,True
+label_011,b_rows_no_conf,storage_temp_max,8.0,8,True,True
+label_012,b_rows_no_conf,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_012,b_rows_no_conf,batch_no,TPBN78,TPBN78,True,True
+label_012,b_rows_no_conf,mfg_date,2022-03-23,2022-03-23,True,True
+label_012,b_rows_no_conf,expiry_date,2025-03-31,2025-03-31,True,True
+label_012,b_rows_no_conf,storage_temp_min,,,True,True
+label_012,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_013,b_rows_no_conf,product,Amoxicillin 500mg Capsules,Amoxicillin 500mg Capsules,True,True
+label_013,b_rows_no_conf,batch_no,W1938,W1938,True,True
+label_013,b_rows_no_conf,mfg_date,2023-12-04,2023-04-12,False,False
+label_013,b_rows_no_conf,expiry_date,,2025-07-31,False,False
+label_013,b_rows_no_conf,storage_temp_min,,,True,True
+label_013,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_014,b_rows_no_conf,product,Azithromycin 250mg Tablets,Azithromycin 250mg Tablets,True,True
+label_014,b_rows_no_conf,batch_no,3749181,3749181,True,True
+label_014,b_rows_no_conf,mfg_date,2022-04-01,2022-04-01,True,True
+label_014,b_rows_no_conf,expiry_date,2025-09-30,2025-09-30,True,True
+label_014,b_rows_no_conf,storage_temp_min,-20.0,-20,True,True
+label_014,b_rows_no_conf,storage_temp_max,-20.0,-20,True,True
+label_015,b_rows_no_conf,product,Multivitamin Syrup,Multivitamin Syrup,True,True
+label_015,b_rows_no_conf,batch_no,496963,496963,True,True
+label_015,b_rows_no_conf,mfg_date,2025-01-01,2025-01-01,True,True
+label_015,b_rows_no_conf,expiry_date,2026-01-31,2026-01-31,True,True
+label_015,b_rows_no_conf,storage_temp_min,,,True,True
+label_015,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_016,b_rows_no_conf,product,Diclofenac Gel,Diclofenac Gel,True,True
+label_016,b_rows_no_conf,batch_no,WM31YI,WM31YI,True,True
+label_016,b_rows_no_conf,mfg_date,2023-12-02,2023-02-12,False,False
+label_016,b_rows_no_conf,expiry_date,2024-09-12,2024-12-09,False,False
+label_016,b_rows_no_conf,storage_temp_min,,,True,True
+label_016,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_017,b_rows_no_conf,product,,COVAXIN Vaccine Vial,False,False
+label_017,b_rows_no_conf,batch_no,,0284869,False,False
+label_017,b_rows_no_conf,mfg_date,,2025-05-01,False,False
+label_017,b_rows_no_conf,expiry_date,,2028-02-29,False,False
+label_017,b_rows_no_conf,storage_temp_min,,,True,True
+label_017,b_rows_no_conf,storage_temp_max,,,True,True
+label_018,b_rows_no_conf,product,COVAXIN,COVAXIN Vaccine Vial,False,False
+label_018,b_rows_no_conf,batch_no,CH38013,CH38013,True,True
+label_018,b_rows_no_conf,mfg_date,2022-09-11,2022-11-09,False,False
+label_018,b_rows_no_conf,expiry_date,2025-01-31,2025-01-31,True,True
+label_018,b_rows_no_conf,storage_temp_min,-8.0,15,False,False
+label_018,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_019,b_rows_no_conf,product,Paracetamol 500mg Tablets,Paracetamol 500mg Tablets,True,True
+label_019,b_rows_no_conf,batch_no,TW57784,TW57784,True,True
+label_019,b_rows_no_conf,mfg_date,2023-07-01,2023-07-01,True,True
+label_019,b_rows_no_conf,expiry_date,2026-12-21,2026-12-21,True,True
+label_019,b_rows_no_conf,storage_temp_min,15.0,15,True,True
+label_019,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_020,b_rows_no_conf,product,,Pantoprazole 40mg Tablets,False,False
+label_020,b_rows_no_conf,batch_no,,FI29484,False,False
+label_020,b_rows_no_conf,mfg_date,,2026-03-01,False,False
+label_020,b_rows_no_conf,expiry_date,,2027-06-29,False,False
+label_020,b_rows_no_conf,storage_temp_min,,,True,True
+label_020,b_rows_no_conf,storage_temp_max,,,True,True
+label_021,b_rows_no_conf,product,Ranitidine 150mg Tablets,Ranitidine 150mg Tablets,True,True
+label_021,b_rows_no_conf,batch_no,JNV8Z2,JNV8Z2,True,True
+label_021,b_rows_no_conf,mfg_date,2022-02-12,2022-12-02,False,False
+label_021,b_rows_no_conf,expiry_date,2025-08-31,2025-08-31,True,True
+label_021,b_rows_no_conf,storage_temp_min,,,True,True
+label_021,b_rows_no_conf,storage_temp_max,25.0,25,True,True
+label_022,b_rows_no_conf,product,Azithromycin 250mg Tablets,Azithromycin 250mg Tablets,True,True
+label_022,b_rows_no_conf,batch_no,RB04443,RB04443,True,True
+label_022,b_rows_no_conf,mfg_date,2024-07-01,2024-07-01,True,True
+label_022,b_rows_no_conf,expiry_date,2026-06-08,2026-06-08,True,True
+label_022,b_rows_no_conf,storage_temp_min,,,True,True
+label_022,b_rows_no_conf,storage_temp_max,,,True,True
+label_023,b_rows_no_conf,product,COVAXIN Vaccine Vial,COVAXIN Vaccine Vial,True,True
+label_023,b_rows_no_conf,batch_no,tren430,IM12738,False,False
+label_023,b_rows_no_conf,mfg_date,,2025-12-01,False,False
+label_023,b_rows_no_conf,expiry_date,,2028-06-24,False,False
+label_023,b_rows_no_conf,storage_temp_min,,-20,False,False
+label_023,b_rows_no_conf,storage_temp_max,,-20,False,False
+label_024,b_rows_no_conf,product,COVAXIN,COVAXIN Vaccine Vial,False,False
+label_024,b_rows_no_conf,batch_no,H45473,H45473,True,True
+label_024,b_rows_no_conf,mfg_date,2025-12-01,2025-12-01,True,True
+label_024,b_rows_no_conf,expiry_date,2029-06-30,2029-06-30,True,True
+label_024,b_rows_no_conf,storage_temp_min,8.0,2,False,False
+label_024,b_rows_no_conf,storage_temp_max,20.0,8,False,False
+label_025,b_rows_no_conf,product,buprofen,Ibuprofen 400mg Tablets,False,False
+label_025,b_rows_no_conf,batch_no,1052956,1052956,True,True
+label_025,b_rows_no_conf,mfg_date,2026-06-17,2022-09-16,False,False
+label_025,b_rows_no_conf,expiry_date,2022-09-16,2026-06-17,False,False
+label_025,b_rows_no_conf,storage_temp_min,-20.0,-20,True,True
+label_025,b_rows_no_conf,storage_temp_max,20.0,-20,False,False
+label_026,b_rows_no_conf,product,Uimin 500mg Tablets,Metformin 500mg Tablets,False,False
+label_026,b_rows_no_conf,batch_no,0254567,0254567,True,True
+label_026,b_rows_no_conf,mfg_date,,2024-02-01,False,False
+label_026,b_rows_no_conf,expiry_date,2024-02-29,2027-08-31,False,False
+label_026,b_rows_no_conf,storage_temp_min,-20.0,-20,True,True
+label_026,b_rows_no_conf,storage_temp_max,-20.0,-20,True,True
+label_027,b_rows_no_conf,product,ORS Sachet,ORS Sachet,True,True
+label_027,b_rows_no_conf,batch_no,4522774,4522774,True,True
+label_027,b_rows_no_conf,mfg_date,2025-11-01,2025-11-01,True,True
+label_027,b_rows_no_conf,expiry_date,2028-02-28,2028-02-29,False,False
+label_027,b_rows_no_conf,storage_temp_min,-20.0,-20,True,True
+label_027,b_rows_no_conf,storage_temp_max,-20.0,-20,True,True
+label_028,b_rows_no_conf,product,ORS + Zinc Dispersible Tablets,ORS + Zinc Dispersible Tablets,True,True
+label_028,b_rows_no_conf,batch_no,LJD84U,LJD84U,True,True
+label_028,b_rows_no_conf,mfg_date,2022-02-01,2022-02-01,True,True
+label_028,b_rows_no_conf,expiry_date,2024-08-16,2024-08-16,True,True
+label_028,b_rows_no_conf,storage_temp_min,,,True,True
+label_028,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_029,b_rows_no_conf,product,Cough Syrup DX,Cough Syrup DX,True,True
+label_029,b_rows_no_conf,batch_no,Du6541,DU6541,True,True
+label_029,b_rows_no_conf,mfg_date,2024-01-01,2024-01-01,True,True
+label_029,b_rows_no_conf,expiry_date,2027-10-31,2027-10-31,True,True
+label_029,b_rows_no_conf,storage_temp_min,,,True,True
+label_029,b_rows_no_conf,storage_temp_max,25.0,25,True,True
+label_030,b_rows_no_conf,product,Ibuprofen 400mg Tablets,Ibuprofen 400mg Tablets,True,True
+label_030,b_rows_no_conf,batch_no,ZORQQF,ZORQQF,True,True
+label_030,b_rows_no_conf,mfg_date,2023-01-01,2023-01-01,True,True
+label_030,b_rows_no_conf,expiry_date,2026-01-12,2026-12-01,False,False
+label_030,b_rows_no_conf,storage_temp_min,,,True,True
+label_030,b_rows_no_conf,storage_temp_max,25.8,25,False,False
+label_031,b_rows_no_conf,product,Vitamin D3 60K IU Capsules,Vitamin D3 60K IU Capsules,True,True
+label_031,b_rows_no_conf,batch_no,WZ5270,WZ5270,True,True
+label_031,b_rows_no_conf,mfg_date,2026-03-01,2026-03-01,True,True
+label_031,b_rows_no_conf,expiry_date,2029-10-31,2029-10-31,True,True
+label_031,b_rows_no_conf,storage_temp_min,15.8,15,False,False
+label_031,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_032,b_rows_no_conf,product,Cetirizine Syrup,Cetirizine Syrup,True,True
+label_032,b_rows_no_conf,batch_no,IS8883,IS8883,True,True
+label_032,b_rows_no_conf,mfg_date,2023-10-01,2023-10-01,True,True
+label_032,b_rows_no_conf,expiry_date,2027-06-07,2027-07-06,False,False
+label_032,b_rows_no_conf,storage_temp_min,-20.0,-20,True,True
+label_032,b_rows_no_conf,storage_temp_max,-20.0,-20,True,True
+label_033,b_rows_no_conf,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_033,b_rows_no_conf,batch_no,657108,G57108,False,False
+label_033,b_rows_no_conf,mfg_date,2025-06-01,2025-06-01,True,True
+label_033,b_rows_no_conf,expiry_date,2027-10-31,2027-10-31,True,True
+label_033,b_rows_no_conf,storage_temp_min,,,True,True
+label_033,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_034,b_rows_no_conf,product,Ibuprofen 400mg Tablets,Ibuprofen 400mg Tablets,True,True
+label_034,b_rows_no_conf,batch_no,8YQK94,8YQK94,True,True
+label_034,b_rows_no_conf,mfg_date,2022-08-01,2022-08-01,True,True
+label_034,b_rows_no_conf,expiry_date,2024-12-31,2024-12-31,True,True
+label_034,b_rows_no_conf,storage_temp_min,8.0,2,False,False
+label_034,b_rows_no_conf,storage_temp_max,28.0,8,False,False
+label_035,b_rows_no_conf,product,COVAXIN Vaccine Vial,COVAXIN Vaccine Vial,True,True
+label_035,b_rows_no_conf,batch_no,GJIIYE,GJ11YE,False,False
+label_035,b_rows_no_conf,mfg_date,2022-07-01,2022-07-01,True,True
+label_035,b_rows_no_conf,expiry_date,2023-10-31,2023-10-31,True,True
+label_035,b_rows_no_conf,storage_temp_min,,,True,True
+label_035,b_rows_no_conf,storage_temp_max,25.0,25,True,True
+label_036,b_rows_no_conf,product,,Pantoprazole 40mg Tablets,False,False
+label_036,b_rows_no_conf,batch_no,,9992884,False,False
+label_036,b_rows_no_conf,mfg_date,,2022-06-04,False,False
+label_036,b_rows_no_conf,expiry_date,,2024-03-31,False,False
+label_036,b_rows_no_conf,storage_temp_min,,,True,True
+label_036,b_rows_no_conf,storage_temp_max,,,True,True
+label_037,b_rows_no_conf,product,,Vitamin D3 60K IU Capsules,False,False
+label_037,b_rows_no_conf,batch_no,,7DIA5U,False,False
+label_037,b_rows_no_conf,mfg_date,,2025-06-01,False,False
+label_037,b_rows_no_conf,expiry_date,,2027-08-30,False,False
+label_037,b_rows_no_conf,storage_temp_min,,,True,True
+label_037,b_rows_no_conf,storage_temp_max,,,True,True
+label_038,b_rows_no_conf,product,Ranitidine 150mg Tablets,Ranitidine 150mg Tablets,True,True
+label_038,b_rows_no_conf,batch_no,PS68692,PS68692,True,True
+label_038,b_rows_no_conf,mfg_date,2025-11-14,2025-11-14,True,True
+label_038,b_rows_no_conf,expiry_date,2028-12-31,2028-12-31,True,True
+label_038,b_rows_no_conf,storage_temp_min,15.0,15,True,True
+label_038,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_039,b_rows_no_conf,product,Paracetamol 500mg Tablets,Paracetamol 500mg Tablets,True,True
+label_039,b_rows_no_conf,batch_no,2150722,2150722,True,True
+label_039,b_rows_no_conf,mfg_date,2023-04-23,2023-04-23,True,True
+label_039,b_rows_no_conf,expiry_date,2026-02-28,2026-02-28,True,True
+label_039,b_rows_no_conf,storage_temp_min,,,True,True
+label_039,b_rows_no_conf,storage_temp_max,25.0,25,True,True
+label_040,b_rows_no_conf,product,ORS Sachet,ORS Sachet,True,True
+label_040,b_rows_no_conf,batch_no,D57475,D57475,True,True
+label_040,b_rows_no_conf,mfg_date,2022-08-01,2022-08-01,True,True
+label_040,b_rows_no_conf,expiry_date,2026-02-22,2026-02-22,True,True
+label_040,b_rows_no_conf,storage_temp_min,-20.8,-20,False,False
+label_040,b_rows_no_conf,storage_temp_max,-20.8,-20,False,False
+label_041,b_rows_no_conf,product,Metformin 500mg Tablets,Metformin 500mg Tablets,True,True
+label_041,b_rows_no_conf,batch_no,265395,265395,True,True
+label_041,b_rows_no_conf,mfg_date,2024-07-01,2024-07-01,True,True
+label_041,b_rows_no_conf,expiry_date,2028-05-31,2028-05-31,True,True
+label_041,b_rows_no_conf,storage_temp_min,,,True,True
+label_041,b_rows_no_conf,storage_temp_max,25.0,25,True,True
+label_042,b_rows_no_conf,product,Pantoprwzole Aume Tablcte,Pantoprazole 40mg Tablets,False,False
+label_042,b_rows_no_conf,batch_no,LOI R0.007,R08007,False,False
+label_042,b_rows_no_conf,mfg_date,2022-09-01,2022-09-01,True,True
+label_042,b_rows_no_conf,expiry_date,7024-01-31,2024-01-31,False,False
+label_042,b_rows_no_conf,storage_temp_min,-20.0,-20,True,True
+label_042,b_rows_no_conf,storage_temp_max,-20.0,-20,True,True
+label_043,b_rows_no_conf,product,,Doxycycline 100mg Capsules,False,False
+label_043,b_rows_no_conf,batch_no,,351224,False,False
+label_043,b_rows_no_conf,mfg_date,,2025-02-01,False,False
+label_043,b_rows_no_conf,expiry_date,,2026-04-30,False,False
+label_043,b_rows_no_conf,storage_temp_min,,,True,True
+label_043,b_rows_no_conf,storage_temp_max,,,True,True
+label_044,b_rows_no_conf,product,Paracetamol 100mg Tablets,Paracetamol 500mg Tablets,False,True
+label_044,b_rows_no_conf,batch_no,341339,341339,True,True
+label_044,b_rows_no_conf,mfg_date,2025-06-05,2025-05-06,False,False
+label_044,b_rows_no_conf,expiry_date,2026-10-26,2026-10-26,True,True
+label_044,b_rows_no_conf,storage_temp_min,,,True,True
+label_044,b_rows_no_conf,storage_temp_max,30.9,30,False,False
+label_045,b_rows_no_conf,product,Ibuprofen 400mg Tablets,Ibuprofen 400mg Tablets,True,True
+label_045,b_rows_no_conf,batch_no,YRYBOV,YRYBOV,True,True
+label_045,b_rows_no_conf,mfg_date,2022-01-01,2022-01-01,True,True
+label_045,b_rows_no_conf,expiry_date,2024-09-03,2024-03-09,False,False
+label_045,b_rows_no_conf,storage_temp_min,,,True,True
+label_045,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_046,b_rows_no_conf,product,Cetirizine Syrup,Cetirizine Syrup,True,True
+label_046,b_rows_no_conf,batch_no,L98557,L98557,True,True
+label_046,b_rows_no_conf,mfg_date,2024-05-05,2024-05-05,True,True
+label_046,b_rows_no_conf,expiry_date,2026-12-31,2026-12-31,True,True
+label_046,b_rows_no_conf,storage_temp_min,,,True,True
+label_046,b_rows_no_conf,storage_temp_max,25.0,25,True,True
+label_047,b_rows_no_conf,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_047,b_rows_no_conf,batch_no,B No 8XFDJG,8XFDJG,False,False
+label_047,b_rows_no_conf,mfg_date,2022-10-11,2022-11-10,False,False
+label_047,b_rows_no_conf,expiry_date,2024-04-30,2024-04-30,True,True
+label_047,b_rows_no_conf,storage_temp_min,158.0,15,False,False
+label_047,b_rows_no_conf,storage_temp_max,308.0,30,False,False
+label_048,b_rows_no_conf,product,Cetirizine Syrup,Cetirizine Syrup,True,True
+label_048,b_rows_no_conf,batch_no,VNU8OB,VNU80B,False,False
+label_048,b_rows_no_conf,mfg_date,2025-03-01,2025-03-01,True,True
+label_048,b_rows_no_conf,expiry_date,2027-04-30,2027-04-30,True,True
+label_048,b_rows_no_conf,storage_temp_min,15.0,15,True,True
+label_048,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_049,b_rows_no_conf,product,Cough Syrup DX,Cough Syrup DX,True,True
+label_049,b_rows_no_conf,batch_no,0627698,0627698,True,True
+label_049,b_rows_no_conf,mfg_date,2023-11-01,2023-11-01,True,True
+label_049,b_rows_no_conf,expiry_date,2025-04-30,2025-04-30,True,True
+label_049,b_rows_no_conf,storage_temp_min,,,True,True
+label_049,b_rows_no_conf,storage_temp_max,30.0,30,True,True
+label_050,b_rows_no_conf,product,Diclofenac Gel,Diclofenac Gel,True,True
+label_050,b_rows_no_conf,batch_no,J9371,J9371,True,True
+label_050,b_rows_no_conf,mfg_date,2022-09-10,2022-10-09,False,False
+label_050,b_rows_no_conf,expiry_date,2024-08-31,2024-08-31,True,True
+label_050,b_rows_no_conf,storage_temp_min,,,True,True
+label_050,b_rows_no_conf,storage_temp_max,25.0,25,True,True
+label_001,c_current,product,Amoxicillin 500mg Capsules,Amoxicillin 500mg Capsules,True,True
+label_001,c_current,batch_no,2117550,2117550,True,True
+label_001,c_current,mfg_date,2022-11-07,2022-07-11,False,False
+label_001,c_current,expiry_date,2024-09-30,2024-09-30,True,True
+label_001,c_current,storage_temp_min,-20.0,-20,True,True
+label_001,c_current,storage_temp_max,-20.0,-20,True,True
+label_002,c_current,product,Metformin 500mg Tablets,Metformin 500mg Tablets,True,True
+label_002,c_current,batch_no,1333204,1333204,True,True
+label_002,c_current,mfg_date,2022-09-13,2022-09-13,True,True
+label_002,c_current,expiry_date,2025-10-31,2025-10-31,True,True
+label_002,c_current,storage_temp_min,8.0,2,False,False
+label_002,c_current,storage_temp_max,20.0,8,False,False
+label_003,c_current,product,Ciprofloxacin 50mg Tablets,Ciprofloxacin 500mg Tablets,False,True
+label_003,c_current,batch_no,3676065,3676065,True,True
+label_003,c_current,mfg_date,2023-05-01,2023-05-01,True,True
+label_003,c_current,expiry_date,2025-04-30,2025-04-30,True,True
+label_003,c_current,storage_temp_min,,2,False,False
+label_003,c_current,storage_temp_max,,8,False,False
+label_004,c_current,product,,Doxycycline 100mg Capsules,False,False
+label_004,c_current,batch_no,,DD74539,False,False
+label_004,c_current,mfg_date,,2022-10-01,False,False
+label_004,c_current,expiry_date,,2026-08-19,False,False
+label_004,c_current,storage_temp_min,,,True,True
+label_004,c_current,storage_temp_max,,25,False,False
+label_005,c_current,product,Multivitamin Syrup,Multivitamin Syrup,True,True
+label_005,c_current,batch_no,CL07797,CL07797,True,True
+label_005,c_current,mfg_date,2024-11-01,2024-11-01,True,True
+label_005,c_current,expiry_date,2026-06-30,2026-06-30,True,True
+label_005,c_current,storage_temp_min,,,True,True
+label_005,c_current,storage_temp_max,,,True,True
+label_006,c_current,product,COVAXIN,COVAXIN Vaccine Vial,False,False
+label_006,c_current,batch_no,890407,890407,True,True
+label_006,c_current,mfg_date,2026-04-18,2026-04-18,True,True
+label_006,c_current,expiry_date,2027-12-31,2027-12-31,True,True
+label_006,c_current,storage_temp_min,15.0,15,True,True
+label_006,c_current,storage_temp_max,30.0,30,True,True
+label_007,c_current,product,Amoxicillin 500mg Capsules,Amoxicillin 500mg Capsules,True,True
+label_007,c_current,batch_no,005507,005507,True,True
+label_007,c_current,mfg_date,2022-01-05,2022-05-01,False,False
+label_007,c_current,expiry_date,2024-11-08,2024-08-11,False,False
+label_007,c_current,storage_temp_min,8.0,2,False,False
+label_007,c_current,storage_temp_max,29.0,8,False,False
+label_008,c_current,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_008,c_current,batch_no,MSO781,MS0781,False,False
+label_008,c_current,mfg_date,2023-01-01,2023-01-01,True,True
+label_008,c_current,expiry_date,2025-02-28,2025-02-28,True,True
+label_008,c_current,storage_temp_min,,,True,True
+label_008,c_current,storage_temp_max,30.8,30,False,False
+label_009,c_current,product,Ranitidine 150mg Tablets,Ranitidine 150mg Tablets,True,True
+label_009,c_current,batch_no,SS12955,SS12955,True,True
+label_009,c_current,mfg_date,2026-03-12,2026-03-12,True,True
+label_009,c_current,expiry_date,2028-12-13,2028-12-13,True,True
+label_009,c_current,storage_temp_min,-20.0,-20,True,True
+label_009,c_current,storage_temp_max,-20.0,-20,True,True
+label_010,c_current,product,Cough Syrup DX,Cough Syrup DX,True,True
+label_010,c_current,batch_no,3623704,3623704,True,True
+label_010,c_current,mfg_date,2025-02-27,2025-02-27,True,True
+label_010,c_current,expiry_date,2026-09-30,2026-09-30,True,True
+label_010,c_current,storage_temp_min,,,True,True
+label_010,c_current,storage_temp_max,30.9,30,False,False
+label_011,c_current,product,Multivitamin Syrup,Multivitamin Syrup,True,True
+label_011,c_current,batch_no,2236852,2236852,True,True
+label_011,c_current,mfg_date,,2022-04-01,False,False
+label_011,c_current,expiry_date,2022-04-30,2023-10-31,False,False
+label_011,c_current,storage_temp_min,,2,False,False
+label_011,c_current,storage_temp_max,,8,False,False
+label_012,c_current,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_012,c_current,batch_no,TPBN78,TPBN78,True,True
+label_012,c_current,mfg_date,2022-03-23,2022-03-23,True,True
+label_012,c_current,expiry_date,2025-03-31,2025-03-31,True,True
+label_012,c_current,storage_temp_min,,,True,True
+label_012,c_current,storage_temp_max,30.0,30,True,True
+label_013,c_current,product,Amoxicillin 500mg Capsules,Amoxicillin 500mg Capsules,True,True
+label_013,c_current,batch_no,W1938,W1938,True,True
+label_013,c_current,mfg_date,2023-12-04,2023-04-12,False,False
+label_013,c_current,expiry_date,,2025-07-31,False,False
+label_013,c_current,storage_temp_min,,,True,True
+label_013,c_current,storage_temp_max,30.0,30,True,True
+label_014,c_current,product,Azithromycin 250mg Tablets,Azithromycin 250mg Tablets,True,True
+label_014,c_current,batch_no,3749181,3749181,True,True
+label_014,c_current,mfg_date,2022-04-01,2022-04-01,True,True
+label_014,c_current,expiry_date,2025-09-30,2025-09-30,True,True
+label_014,c_current,storage_temp_min,-20.0,-20,True,True
+label_014,c_current,storage_temp_max,-20.0,-20,True,True
+label_015,c_current,product,Multivitamin Syrup,Multivitamin Syrup,True,True
+label_015,c_current,batch_no,496963,496963,True,True
+label_015,c_current,mfg_date,2025-01-01,2025-01-01,True,True
+label_015,c_current,expiry_date,2026-01-31,2026-01-31,True,True
+label_015,c_current,storage_temp_min,,,True,True
+label_015,c_current,storage_temp_max,30.0,30,True,True
+label_016,c_current,product,Diclofenac Gel,Diclofenac Gel,True,True
+label_016,c_current,batch_no,WM31YI,WM31YI,True,True
+label_016,c_current,mfg_date,2023-12-02,2023-02-12,False,False
+label_016,c_current,expiry_date,2024-09-12,2024-12-09,False,False
+label_016,c_current,storage_temp_min,,,True,True
+label_016,c_current,storage_temp_max,30.0,30,True,True
+label_017,c_current,product,COVAXIN Vaccine Vial,COVAXIN Vaccine Vial,True,True
+label_017,c_current,batch_no,0284869,0284869,True,True
+label_017,c_current,mfg_date,2025-05-01,2025-05-01,True,True
+label_017,c_current,expiry_date,2028-02-28,2028-02-29,False,False
+label_017,c_current,storage_temp_min,,,True,True
+label_017,c_current,storage_temp_max,,,True,True
+label_018,c_current,product,COVAXIN,COVAXIN Vaccine Vial,False,False
+label_018,c_current,batch_no,CH38013,CH38013,True,True
+label_018,c_current,mfg_date,2022-09-11,2022-11-09,False,False
+label_018,c_current,expiry_date,2025-01-31,2025-01-31,True,True
+label_018,c_current,storage_temp_min,-8.0,15,False,False
+label_018,c_current,storage_temp_max,30.0,30,True,True
+label_019,c_current,product,Paracetamol 500mg Tablets,Paracetamol 500mg Tablets,True,True
+label_019,c_current,batch_no,TW57784,TW57784,True,True
+label_019,c_current,mfg_date,2023-07-01,2023-07-01,True,True
+label_019,c_current,expiry_date,2026-12-21,2026-12-21,True,True
+label_019,c_current,storage_temp_min,15.0,15,True,True
+label_019,c_current,storage_temp_max,30.0,30,True,True
+label_020,c_current,product,,Pantoprazole 40mg Tablets,False,False
+label_020,c_current,batch_no,,FI29484,False,False
+label_020,c_current,mfg_date,,2026-03-01,False,False
+label_020,c_current,expiry_date,,2027-06-29,False,False
+label_020,c_current,storage_temp_min,,,True,True
+label_020,c_current,storage_temp_max,,,True,True
+label_021,c_current,product,Ranitidine 150mg Tablets,Ranitidine 150mg Tablets,True,True
+label_021,c_current,batch_no,JNV8Z2,JNV8Z2,True,True
+label_021,c_current,mfg_date,2022-02-12,2022-12-02,False,False
+label_021,c_current,expiry_date,2025-08-31,2025-08-31,True,True
+label_021,c_current,storage_temp_min,,,True,True
+label_021,c_current,storage_temp_max,25.0,25,True,True
+label_022,c_current,product,Azithromycin 250mg Tablets,Azithromycin 250mg Tablets,True,True
+label_022,c_current,batch_no,RB04443,RB04443,True,True
+label_022,c_current,mfg_date,2024-07-01,2024-07-01,True,True
+label_022,c_current,expiry_date,2026-06-08,2026-06-08,True,True
+label_022,c_current,storage_temp_min,,,True,True
+label_022,c_current,storage_temp_max,,,True,True
+label_023,c_current,product,COVAXIN Vaccine Vial,COVAXIN Vaccine Vial,True,True
+label_023,c_current,batch_no,,IM12738,False,False
+label_023,c_current,mfg_date,,2025-12-01,False,False
+label_023,c_current,expiry_date,,2028-06-24,False,False
+label_023,c_current,storage_temp_min,,-20,False,False
+label_023,c_current,storage_temp_max,,-20,False,False
+label_024,c_current,product,COVAXIN,COVAXIN Vaccine Vial,False,False
+label_024,c_current,batch_no,H45473,H45473,True,True
+label_024,c_current,mfg_date,2025-12-01,2025-12-01,True,True
+label_024,c_current,expiry_date,2029-06-30,2029-06-30,True,True
+label_024,c_current,storage_temp_min,8.0,2,False,False
+label_024,c_current,storage_temp_max,20.0,8,False,False
+label_025,c_current,product,buprofen,Ibuprofen 400mg Tablets,False,False
+label_025,c_current,batch_no,1052956,1052956,True,True
+label_025,c_current,mfg_date,2026-06-17,2022-09-16,False,False
+label_025,c_current,expiry_date,2022-09-16,2026-06-17,False,False
+label_025,c_current,storage_temp_min,-20.0,-20,True,True
+label_025,c_current,storage_temp_max,-20.0,-20,True,True
+label_026,c_current,product,50Omg Tablets,Metformin 500mg Tablets,False,False
+label_026,c_current,batch_no,0254567,0254567,True,True
+label_026,c_current,mfg_date,,2024-02-01,False,False
+label_026,c_current,expiry_date,2024-02-29,2027-08-31,False,False
+label_026,c_current,storage_temp_min,-20.0,-20,True,True
+label_026,c_current,storage_temp_max,-20.0,-20,True,True
+label_027,c_current,product,ORS Sachet,ORS Sachet,True,True
+label_027,c_current,batch_no,4522774,4522774,True,True
+label_027,c_current,mfg_date,2025-11-01,2025-11-01,True,True
+label_027,c_current,expiry_date,2028-02-28,2028-02-29,False,False
+label_027,c_current,storage_temp_min,-20.0,-20,True,True
+label_027,c_current,storage_temp_max,-20.0,-20,True,True
+label_028,c_current,product,ORS + Zinc Dispersible Tablets,ORS + Zinc Dispersible Tablets,True,True
+label_028,c_current,batch_no,LJD84U,LJD84U,True,True
+label_028,c_current,mfg_date,2022-02-01,2022-02-01,True,True
+label_028,c_current,expiry_date,2024-08-16,2024-08-16,True,True
+label_028,c_current,storage_temp_min,,,True,True
+label_028,c_current,storage_temp_max,30.0,30,True,True
+label_029,c_current,product,Cough Syrup DX,Cough Syrup DX,True,True
+label_029,c_current,batch_no,Du6541,DU6541,True,True
+label_029,c_current,mfg_date,2024-01-01,2024-01-01,True,True
+label_029,c_current,expiry_date,2027-10-31,2027-10-31,True,True
+label_029,c_current,storage_temp_min,,,True,True
+label_029,c_current,storage_temp_max,25.0,25,True,True
+label_030,c_current,product,Ibuprofen 400mg Tablets,Ibuprofen 400mg Tablets,True,True
+label_030,c_current,batch_no,ZORQQF,ZORQQF,True,True
+label_030,c_current,mfg_date,2023-01-01,2023-01-01,True,True
+label_030,c_current,expiry_date,2026-01-12,2026-12-01,False,False
+label_030,c_current,storage_temp_min,,,True,True
+label_030,c_current,storage_temp_max,25.8,25,False,False
+label_031,c_current,product,,Vitamin D3 60K IU Capsules,False,False
+label_031,c_current,batch_no,,WZ5270,False,False
+label_031,c_current,mfg_date,,2026-03-01,False,False
+label_031,c_current,expiry_date,,2029-10-31,False,False
+label_031,c_current,storage_temp_min,,15,False,False
+label_031,c_current,storage_temp_max,,30,False,False
+label_032,c_current,product,Cetirizine Syrup,Cetirizine Syrup,True,True
+label_032,c_current,batch_no,IS8883,IS8883,True,True
+label_032,c_current,mfg_date,2023-10-01,2023-10-01,True,True
+label_032,c_current,expiry_date,2027-06-07,2027-07-06,False,False
+label_032,c_current,storage_temp_min,-20.0,-20,True,True
+label_032,c_current,storage_temp_max,-20.0,-20,True,True
+label_033,c_current,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_033,c_current,batch_no,657108,G57108,False,False
+label_033,c_current,mfg_date,2025-06-01,2025-06-01,True,True
+label_033,c_current,expiry_date,2027-10-31,2027-10-31,True,True
+label_033,c_current,storage_temp_min,,,True,True
+label_033,c_current,storage_temp_max,30.0,30,True,True
+label_034,c_current,product,Ibuprofen 400mg Tablets,Ibuprofen 400mg Tablets,True,True
+label_034,c_current,batch_no,8YQK94,8YQK94,True,True
+label_034,c_current,mfg_date,2022-08-01,2022-08-01,True,True
+label_034,c_current,expiry_date,2024-12-31,2024-12-31,True,True
+label_034,c_current,storage_temp_min,8.0,2,False,False
+label_034,c_current,storage_temp_max,28.0,8,False,False
+label_035,c_current,product,COVAXIN Vaccine Vial,COVAXIN Vaccine Vial,True,True
+label_035,c_current,batch_no,GJIIYE,GJ11YE,False,False
+label_035,c_current,mfg_date,2022-07-01,2022-07-01,True,True
+label_035,c_current,expiry_date,2023-10-31,2023-10-31,True,True
+label_035,c_current,storage_temp_min,,,True,True
+label_035,c_current,storage_temp_max,25.0,25,True,True
+label_036,c_current,product,,Pantoprazole 40mg Tablets,False,False
+label_036,c_current,batch_no,,9992884,False,False
+label_036,c_current,mfg_date,,2022-06-04,False,False
+label_036,c_current,expiry_date,,2024-03-31,False,False
+label_036,c_current,storage_temp_min,,,True,True
+label_036,c_current,storage_temp_max,,,True,True
+label_037,c_current,product,,Vitamin D3 60K IU Capsules,False,False
+label_037,c_current,batch_no,,7DIA5U,False,False
+label_037,c_current,mfg_date,,2025-06-01,False,False
+label_037,c_current,expiry_date,,2027-08-30,False,False
+label_037,c_current,storage_temp_min,,,True,True
+label_037,c_current,storage_temp_max,,,True,True
+label_038,c_current,product,Ranitidine 150mg Tablets,Ranitidine 150mg Tablets,True,True
+label_038,c_current,batch_no,PS68692,PS68692,True,True
+label_038,c_current,mfg_date,2025-11-14,2025-11-14,True,True
+label_038,c_current,expiry_date,2028-12-31,2028-12-31,True,True
+label_038,c_current,storage_temp_min,15.0,15,True,True
+label_038,c_current,storage_temp_max,30.0,30,True,True
+label_039,c_current,product,Paracetamol 500mg Tablets,Paracetamol 500mg Tablets,True,True
+label_039,c_current,batch_no,2150722,2150722,True,True
+label_039,c_current,mfg_date,2023-04-23,2023-04-23,True,True
+label_039,c_current,expiry_date,2026-02-28,2026-02-28,True,True
+label_039,c_current,storage_temp_min,,,True,True
+label_039,c_current,storage_temp_max,25.0,25,True,True
+label_040,c_current,product,ORS Sachet,ORS Sachet,True,True
+label_040,c_current,batch_no,D57475,D57475,True,True
+label_040,c_current,mfg_date,2022-08-01,2022-08-01,True,True
+label_040,c_current,expiry_date,2026-02-22,2026-02-22,True,True
+label_040,c_current,storage_temp_min,-20.8,-20,False,False
+label_040,c_current,storage_temp_max,-20.8,-20,False,False
+label_041,c_current,product,Metformin 500mg Tablets,Metformin 500mg Tablets,True,True
+label_041,c_current,batch_no,265395,265395,True,True
+label_041,c_current,mfg_date,2024-07-01,2024-07-01,True,True
+label_041,c_current,expiry_date,2028-05-31,2028-05-31,True,True
+label_041,c_current,storage_temp_min,,,True,True
+label_041,c_current,storage_temp_max,25.0,25,True,True
+label_042,c_current,product,,Pantoprazole 40mg Tablets,False,False
+label_042,c_current,batch_no,,R08007,False,False
+label_042,c_current,mfg_date,,2022-09-01,False,False
+label_042,c_current,expiry_date,,2024-01-31,False,False
+label_042,c_current,storage_temp_min,,-20,False,False
+label_042,c_current,storage_temp_max,,-20,False,False
+label_043,c_current,product,,Doxycycline 100mg Capsules,False,False
+label_043,c_current,batch_no,,351224,False,False
+label_043,c_current,mfg_date,,2025-02-01,False,False
+label_043,c_current,expiry_date,,2026-04-30,False,False
+label_043,c_current,storage_temp_min,,,True,True
+label_043,c_current,storage_temp_max,,,True,True
+label_044,c_current,product,Paracetamol 100mg Tablets,Paracetamol 500mg Tablets,False,True
+label_044,c_current,batch_no,341339,341339,True,True
+label_044,c_current,mfg_date,2025-06-05,2025-05-06,False,False
+label_044,c_current,expiry_date,2026-10-26,2026-10-26,True,True
+label_044,c_current,storage_temp_min,,,True,True
+label_044,c_current,storage_temp_max,30.9,30,False,False
+label_045,c_current,product,,Ibuprofen 400mg Tablets,False,False
+label_045,c_current,batch_no,,YRYBOV,False,False
+label_045,c_current,mfg_date,,2022-01-01,False,False
+label_045,c_current,expiry_date,,2024-03-09,False,False
+label_045,c_current,storage_temp_min,,,True,True
+label_045,c_current,storage_temp_max,,30,False,False
+label_046,c_current,product,Cetirizine Syrup,Cetirizine Syrup,True,True
+label_046,c_current,batch_no,L98557,L98557,True,True
+label_046,c_current,mfg_date,2024-05-05,2024-05-05,True,True
+label_046,c_current,expiry_date,2026-12-31,2026-12-31,True,True
+label_046,c_current,storage_temp_min,,,True,True
+label_046,c_current,storage_temp_max,25.0,25,True,True
+label_047,c_current,product,Ciprofloxacin 500mg Tablets,Ciprofloxacin 500mg Tablets,True,True
+label_047,c_current,batch_no,8XFDJG,8XFDJG,True,True
+label_047,c_current,mfg_date,2022-10-11,2022-11-10,False,False
+label_047,c_current,expiry_date,2024-04-30,2024-04-30,True,True
+label_047,c_current,storage_temp_min,,15,False,False
+label_047,c_current,storage_temp_max,,30,False,False
+label_048,c_current,product,,Cetirizine Syrup,False,False
+label_048,c_current,batch_no,,VNU80B,False,False
+label_048,c_current,mfg_date,,2025-03-01,False,False
+label_048,c_current,expiry_date,,2027-04-30,False,False
+label_048,c_current,storage_temp_min,,15,False,False
+label_048,c_current,storage_temp_max,,30,False,False
+label_049,c_current,product,Cough Syrup DX,Cough Syrup DX,True,True
+label_049,c_current,batch_no,0627698,0627698,True,True
+label_049,c_current,mfg_date,2023-11-01,2023-11-01,True,True
+label_049,c_current,expiry_date,2025-04-30,2025-04-30,True,True
+label_049,c_current,storage_temp_min,,,True,True
+label_049,c_current,storage_temp_max,30.0,30,True,True
+label_050,c_current,product,Diclofenac Gel,Diclofenac Gel,True,True
+label_050,c_current,batch_no,J9371,J9371,True,True
+label_050,c_current,mfg_date,2022-09-10,2022-10-09,False,False
+label_050,c_current,expiry_date,2024-08-31,2024-08-31,True,True
+label_050,c_current,storage_temp_min,,,True,True
+label_050,c_current,storage_temp_max,25.0,25,True,True
