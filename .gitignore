@@ -5,3 +5,4 @@ __pycache__/
 node_modules/
 data/raw/
 data/debug/
+data/cache/
