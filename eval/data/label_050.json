@@ -1,0 +1,10 @@
+{
+  "product": "Diclofenac Gel",
+  "batch_no": "J9371",
+  "mfg_date": "2022-10-09",
+  "expiry_date": "2024-08-31",
+  "storage_temp_min": null,
+  "storage_temp_max": 25,
+  "distortion_type": "glare",
+  "distortion_severity": 2
+}

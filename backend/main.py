@@ -1,10 +1,11 @@
+import base64
 import uuid
 from pathlib import Path
 
 import cv2
 import numpy as np
 from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
 
 from compliance import check_compliance
 from extract import extract_fields
@@ -14,6 +15,12 @@ from preprocess import preprocess, save_steps
 app = FastAPI(title="ColdLens API")
 
 DEBUG_DIR = Path(__file__).resolve().parent.parent / "data" / "debug"
+STATIC_DIR = Path(__file__).resolve().parent / "static"
+
+
+@app.get("/")
+def index():
+    return FileResponse(STATIC_DIR / "index.html")
 
 
 @app.get("/health")
@@ -52,8 +59,12 @@ async def analyze_endpoint(file: UploadFile = File(...)):
     fields = extract_fields(ocr_result["full_text"])
     flags = check_compliance(fields)
 
+    ok, encoded = cv2.imencode(".png", final_image)
+    preprocessed_image = f"data:image/png;base64,{base64.b64encode(encoded).decode('utf-8')}" if ok else None
+
     return {
         "ocr": ocr_result,
         "fields": fields.model_dump(),
         "flags": flags,
+        "preprocessed_image": preprocessed_image,
     }

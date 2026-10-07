@@ -1,0 +1,49 @@
+image_id,variant,distortion_type,distortion_severity,field,extracted,expected,match
+label_001,no_preprocessing,none,0,product,Amoxicillin 50Omg Capsules,Amoxicillin 500mg Capsules,False
+label_001,no_preprocessing,none,0,batch_no,2117550,2117550,True
+label_001,no_preprocessing,none,0,mfg_date,2022-07-11,2022-07-11,True
+label_001,no_preprocessing,none,0,expiry_date,2024-09-30,2024-09-30,True
+label_001,no_preprocessing,none,0,storage_temp_min,-20.0,-20,True
+label_001,no_preprocessing,none,0,storage_temp_max,-20.0,-20,True
+label_001,grayscale_denoise,none,0,product,Amoxicillin 50Omg Capsules,Amoxicillin 500mg Capsules,False
+label_001,grayscale_denoise,none,0,batch_no,2117550,2117550,True
+label_001,grayscale_denoise,none,0,mfg_date,2022-07-11,2022-07-11,True
+label_001,grayscale_denoise,none,0,expiry_date,2024-09-30,2024-09-30,True
+label_001,grayscale_denoise,none,0,storage_temp_min,-20.0,-20,True
+label_001,grayscale_denoise,none,0,storage_temp_max,-20.0,-20,True
+label_001,full_no_threshold,none,0,product,Amoxicillin 50Omg Capsules,Amoxicillin 500mg Capsules,False
+label_001,full_no_threshold,none,0,batch_no,2117550,2117550,True
+label_001,full_no_threshold,none,0,mfg_date,2022-07-11,2022-07-11,True
+label_001,full_no_threshold,none,0,expiry_date,2024-09-30,2024-09-30,True
+label_001,full_no_threshold,none,0,storage_temp_min,-20.0,-20,True
+label_001,full_no_threshold,none,0,storage_temp_max,-20.0,-20,True
+label_001,full_pipeline,none,0,product,Amoxicillin 5OOmg Capsules,Amoxicillin 500mg Capsules,False
+label_001,full_pipeline,none,0,batch_no,2117550,2117550,True
+label_001,full_pipeline,none,0,mfg_date,2022-07-11,2022-07-11,True
+label_001,full_pipeline,none,0,expiry_date,2024-09-30,2024-09-30,True
+label_001,full_pipeline,none,0,storage_temp_min,-20.0,-20,True
+label_001,full_pipeline,none,0,storage_temp_max,-20.0,-20,True
+label_002,no_preprocessing,blur,1,product,Metformin SOOmg Tablets,Metformin 500mg Tablets,False
+label_002,no_preprocessing,blur,1,batch_no,1333204,1333204,True
+label_002,no_preprocessing,blur,1,mfg_date,2022-09-13,2022-09-13,True
+label_002,no_preprocessing,blur,1,expiry_date,2025-10-31,2025-10-31,True
+label_002,no_preprocessing,blur,1,storage_temp_min,8.0,2,False
+label_002,no_preprocessing,blur,1,storage_temp_max,20.0,8,False
+label_002,grayscale_denoise,blur,1,product,Metformin SOOmg Tablets,Metformin 500mg Tablets,False
+label_002,grayscale_denoise,blur,1,batch_no,1333204,1333204,True
+label_002,grayscale_denoise,blur,1,mfg_date,2022-09-13,2022-09-13,True
+label_002,grayscale_denoise,blur,1,expiry_date,2025-10-31,2025-10-31,True
+label_002,grayscale_denoise,blur,1,storage_temp_min,8.0,2,False
+label_002,grayscale_denoise,blur,1,storage_temp_max,20.0,8,False
+label_002,full_no_threshold,blur,1,product,Metformin SOOmg Tablets,Metformin 500mg Tablets,False
+label_002,full_no_threshold,blur,1,batch_no,1333204,1333204,True
+label_002,full_no_threshold,blur,1,mfg_date,2022-09-13,2022-09-13,True
+label_002,full_no_threshold,blur,1,expiry_date,2025-10-31,2025-10-31,True
+label_002,full_no_threshold,blur,1,storage_temp_min,8.0,2,False
+label_002,full_no_threshold,blur,1,storage_temp_max,20.0,8,False
+label_002,full_pipeline,blur,1,product,Metformin 5OOmg Tablets,Metformin 500mg Tablets,False
+label_002,full_pipeline,blur,1,batch_no,1333204,1333204,True
+label_002,full_pipeline,blur,1,mfg_date,2022-09-13,2022-09-13,True
+label_002,full_pipeline,blur,1,expiry_date,2025-10-31,2025-10-31,True
+label_002,full_pipeline,blur,1,storage_temp_min,2.0,2,True
+label_002,full_pipeline,blur,1,storage_temp_max,8.0,8,True

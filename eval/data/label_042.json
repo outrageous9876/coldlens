@@ -1,0 +1,10 @@
+{
+  "product": "Pantoprazole 40mg Tablets",
+  "batch_no": "R08007",
+  "mfg_date": "2022-09-01",
+  "expiry_date": "2024-01-31",
+  "storage_temp_min": -20,
+  "storage_temp_max": -20,
+  "distortion_type": "blur",
+  "distortion_severity": 3
+}

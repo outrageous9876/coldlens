@@ -1,0 +1,10 @@
+{
+  "product": "Ciprofloxacin 500mg Tablets",
+  "batch_no": "TPBN78",
+  "mfg_date": "2022-03-23",
+  "expiry_date": "2025-03-31",
+  "storage_temp_min": null,
+  "storage_temp_max": 30,
+  "distortion_type": "glare",
+  "distortion_severity": 2
+}

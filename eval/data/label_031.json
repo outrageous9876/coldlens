@@ -1,0 +1,10 @@
+{
+  "product": "Vitamin D3 60K IU Capsules",
+  "batch_no": "WZ5270",
+  "mfg_date": "2026-03-01",
+  "expiry_date": "2029-10-31",
+  "storage_temp_min": 15,
+  "storage_temp_max": 30,
+  "distortion_type": "glare",
+  "distortion_severity": 2
+}

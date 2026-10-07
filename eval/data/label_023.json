@@ -1,0 +1,10 @@
+{
+  "product": "COVAXIN Vaccine Vial",
+  "batch_no": "IM12738",
+  "mfg_date": "2025-12-01",
+  "expiry_date": "2028-06-24",
+  "storage_temp_min": -20,
+  "storage_temp_max": -20,
+  "distortion_type": "blur",
+  "distortion_severity": 3
+}

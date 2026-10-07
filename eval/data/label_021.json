@@ -1,0 +1,10 @@
+{
+  "product": "Ranitidine 150mg Tablets",
+  "batch_no": "JNV8Z2",
+  "mfg_date": "2022-12-02",
+  "expiry_date": "2025-08-31",
+  "storage_temp_min": null,
+  "storage_temp_max": 25,
+  "distortion_type": "blur",
+  "distortion_severity": 1
+}

@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ColdLens</title>
+<style>
+  :root {
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --border: #e2e6ea;
+    --text: #1a2230;
+    --muted: #8a93a3;
+    --accent: #0f6fde;
+    --accent-dark: #0b57b3;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 32px 16px 64px;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  header p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  }
+
+  #dropzone {
+    border: 2px dashed #c4ccd6;
+    border-radius: 12px;
+    padding: 48px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  #dropzone:hover,
+  #dropzone.dragover {
+    border-color: var(--accent);
+    background: #f0f6ff;
+  }
+
+  #dropzone .icon {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+  }
+
+  #dropzone .primary {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  #dropzone .secondary {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  #fileInput { display: none; }
+
+  #status {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    padding: 20px;
+    color: var(--muted);
+  }
+
+  #status.visible { display: flex; }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #d7dee8;
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #error {
+    display: none;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+  }
+
+  #results { display: none; }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 560px) {
+    .image-grid { grid-template-columns: 1fr; }
+  }
+
+  .image-box { text-align: center; }
+
+  .image-box h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0 0 8px;
+    font-weight: 600;
+  }
+
+  .image-box img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #fafafa;
+    display: block;
+  }
+
+  .fields-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 24px;
+  }
+
+  @media (max-width: 560px) {
+    .fields-grid { grid-template-columns: 1fr; }
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .field .value {
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
+  .field .value.empty {
+    color: var(--muted);
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #fff;
+  }
+
+  .badge.expired { background: #dc2626; }
+  .badge.expiring { background: #ea580c; }
+  .badge.cold { background: #2563eb; }
+  .badge.missing { background: #ca8a04; }
+  .badge.clear { background: #16a34a; }
+
+  details {
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+    padding-top: 14px;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+    outline: none;
+  }
+
+  details pre {
+    margin-top: 12px;
+    background: #f8f9fb;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+
+  .section-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    font-weight: 600;
+    margin: 0 0 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>ColdLens</h1>
+    <p>AI label intelligence for cold chain &amp; pharma</p>
+  </header>
+
+  <div class="card">
+    <div id="dropzone">
+      <div class="icon">&#128248;</div>
+      <div class="primary">Drop a label photo here, or click to upload</div>
+      <div class="secondary">JPG, PNG or WebP</div>
+    </div>
+    <input type="file" id="fileInput" accept="image/*">
+    <div id="status">
+      <div class="spinner"></div>
+      <span>Analyzing label &mdash; OCR can take ~20s on CPU&hellip;</span>
+    </div>
+  </div>
+
+  <div id="error"></div>
+
+  <div id="results">
+    <div class="card">
+      <p class="section-title">Image</p>
+      <div class="image-grid">
+        <div class="image-box">
+          <h3>Original</h3>
+          <img id="originalImg" alt="Original upload">
+        </div>
+        <div class="image-box">
+          <h3>Preprocessed</h3>
+          <img id="preprocessedImg" alt="Preprocessed image">
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="section-title">Extracted Fields</p>
+      <div class="fields-grid" id="fieldsGrid"></div>
+    </div>
+
+    <div class="card">
+      <p class="section-title">Compliance</p>
+      <div class="badges" id="badges"></div>
+
+      <details>
+        <summary>Raw OCR text</summary>
+        <pre id="ocrText"></pre>
+      </details>
+    </div>
+  </div>
+</div>
+
+<script>
+  const dropzone = document.getElementById("dropzone");
+  const fileInput = document.getElementById("fileInput");
+  const statusEl = document.getElementById("status");
+  const errorEl = document.getElementById("error");
+  const resultsEl = document.getElementById("results");
+  const originalImg = document.getElementById("originalImg");
+  const preprocessedImg = document.getElementById("preprocessedImg");
+  const fieldsGrid = document.getElementById("fieldsGrid");
+  const badgesEl = document.getElementById("badges");
+  const ocrTextEl = document.getElementById("ocrText");
+
+  dropzone.addEventListener("click", () => fileInput.click());
+
+  dropzone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropzone.classList.add("dragover");
+  });
+
+  dropzone.addEventListener("dragleave", () => {
+    dropzone.classList.remove("dragover");
+  });
+
+  dropzone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropzone.classList.remove("dragover");
+    const file = e.dataTransfer.files[0];
+    if (file) handleFile(file);
+  });
+
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+    if (file) handleFile(file);
+  });
+
+  const FIELD_LABELS = {
+    product: "Product",
+    batch_no: "Batch No.",
+    mfg_date: "Mfg. Date",
+    expiry_date: "Expiry Date",
+  };
+
+  function formatStorageTemp(min, max) {
+    if (min === null && max === null) return null;
+    if (min !== null && max !== null) {
+      return min === max ? `${min}°C` : `${min}°C – ${max}°C`;
+    }
+    if (max !== null) return `≤ ${max}°C`;
+    return `≥ ${min}°C`;
+  }
+
+  function renderFields(fields) {
+    fieldsGrid.innerHTML = "";
+
+    for (const key of ["product", "batch_no", "mfg_date", "expiry_date"]) {
+      const value = fields[key];
+      fieldsGrid.appendChild(buildField(FIELD_LABELS[key], value));
+    }
+
+    const storage = formatStorageTemp(fields.storage_temp_min, fields.storage_temp_max);
+    fieldsGrid.appendChild(buildField("Storage Temp", storage));
+  }
+
+  function buildField(label, value) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "field";
+
+    const labelEl = document.createElement("label");
+    labelEl.textContent = label;
+
+    const valueEl = document.createElement("div");
+    if (value === null || value === undefined || value === "") {
+      valueEl.className = "value empty";
+      valueEl.textContent = "Not found";
+    } else {
+      valueEl.className = "value";
+      valueEl.textContent = value;
+    }
+
+    wrapper.appendChild(labelEl);
+    wrapper.appendChild(valueEl);
+    return wrapper;
+  }
+
+  function renderBadges(flags) {
+    badgesEl.innerHTML = "";
+    const badgeDefs = [
+      ["expired", "EXPIRED", "expired"],
+      ["expiring_soon", "EXPIRING SOON", "expiring"],
+      ["cold_storage_required", "COLD STORAGE", "cold"],
+      ["missing_batch_no", "MISSING BATCH", "missing"],
+    ];
+
+    let anyActive = false;
+    for (const [key, label, cls] of badgeDefs) {
+      if (flags[key]) {
+        anyActive = true;
+        const span = document.createElement("span");
+        span.className = `badge ${cls}`;
+        span.textContent = label;
+        badgesEl.appendChild(span);
+      }
+    }
+
+    if (!anyActive) {
+      const span = document.createElement("span");
+      span.className = "badge clear";
+      span.textContent = "ALL CLEAR";
+      badgesEl.appendChild(span);
+    }
+  }
+
+  async function handleFile(file) {
+    errorEl.style.display = "none";
+    resultsEl.style.display = "none";
+    statusEl.classList.add("visible");
+
+    originalImg.src = URL.createObjectURL(file);
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("/analyze", { method: "POST", body: formData });
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body.error || `Request failed (${response.status})`);
+      }
+      const data = await response.json();
+
+      preprocessedImg.src = data.preprocessed_image || "";
+      renderFields(data.fields || {});
+      renderBadges(data.flags || {});
+      ocrTextEl.textContent = (data.ocr && data.ocr.full_text) || "(no text detected)";
+
+      resultsEl.style.display = "block";
+    } catch (err) {
+      errorEl.textContent = err.message || "Something went wrong analyzing this image.";
+      errorEl.style.display = "block";
+    } finally {
+      statusEl.classList.remove("visible");
+    }
+  }
+</script>
+</body>
+</html>

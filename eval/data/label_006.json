@@ -1,0 +1,10 @@
+{
+  "product": "COVAXIN Vaccine Vial",
+  "batch_no": "890407",
+  "mfg_date": "2026-04-18",
+  "expiry_date": "2027-12-31",
+  "storage_temp_min": 15,
+  "storage_temp_max": 30,
+  "distortion_type": "rotation",
+  "distortion_severity": 2
+}

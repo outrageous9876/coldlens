@@ -1,0 +1,10 @@
+{
+  "product": "COVAXIN Vaccine Vial",
+  "batch_no": "CH38013",
+  "mfg_date": "2022-11-09",
+  "expiry_date": "2025-01-31",
+  "storage_temp_min": 15,
+  "storage_temp_max": 30,
+  "distortion_type": "low_light",
+  "distortion_severity": 2
+}

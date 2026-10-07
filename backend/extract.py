@@ -93,6 +93,13 @@ def _cache_key(ocr_text: str) -> str:
     return hashlib.sha256(f"{GROQ_MODEL}:{ocr_text}".encode("utf-8")).hexdigest()
 
 
+def is_cached(ocr_text: str) -> bool:
+    """Check whether extract_fields(ocr_text) would hit the cache, without
+    making an API call. Lets callers that batch many calls (e.g. the eval
+    harness) skip their rate-limit pacing delay on cache hits."""
+    return _cache_key(ocr_text) in _load_cache()
+
+
 def _call_groq_with_retry(**kwargs):
     """Groq's SDK already retries transport errors internally, but we add
     our own backoff specifically for 429 (rate limit) since those are
@@ -114,6 +121,14 @@ def extract_fields(ocr_text: str) -> LabelFields:
     if key in cache:
         return LabelFields(**cache[key])
 
+    extra_kwargs = {}
+    if GROQ_MODEL.startswith("openai/gpt-oss"):
+        # gpt-oss models spend a large, controllable number of hidden
+        # "reasoning" tokens before answering - "low" is plenty for a
+        # short structured-extraction task like this and roughly halves
+        # token usage per call (measured: ~1330 -> ~685 tokens).
+        extra_kwargs["reasoning_effort"] = "low"
+
     response = _call_groq_with_retry(
         model=GROQ_MODEL,
         response_format={"type": "json_object"},
@@ -122,6 +137,7 @@ def extract_fields(ocr_text: str) -> LabelFields:
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": f"OCR text:\n\n{ocr_text}"},
         ],
+        **extra_kwargs,
     )
 
     try:

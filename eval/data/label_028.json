@@ -1,0 +1,10 @@
+{
+  "product": "ORS + Zinc Dispersible Tablets",
+  "batch_no": "LJD84U",
+  "mfg_date": "2022-02-01",
+  "expiry_date": "2024-08-16",
+  "storage_temp_min": null,
+  "storage_temp_max": 30,
+  "distortion_type": "perspective",
+  "distortion_severity": 2
+}

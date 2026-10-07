@@ -1,0 +1,10 @@
+{
+  "product": "Amoxicillin 500mg Capsules",
+  "batch_no": "005507",
+  "mfg_date": "2022-05-01",
+  "expiry_date": "2024-08-11",
+  "storage_temp_min": 2,
+  "storage_temp_max": 8,
+  "distortion_type": "rotation",
+  "distortion_severity": 3
+}

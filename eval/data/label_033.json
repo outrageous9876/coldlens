@@ -1,0 +1,10 @@
+{
+  "product": "Ciprofloxacin 500mg Tablets",
+  "batch_no": "G57108",
+  "mfg_date": "2025-06-01",
+  "expiry_date": "2027-10-31",
+  "storage_temp_min": null,
+  "storage_temp_max": 30,
+  "distortion_type": "noise",
+  "distortion_severity": 1
+}

@@ -1,0 +1,10 @@
+{
+  "product": "Cough Syrup DX",
+  "batch_no": "3623704",
+  "mfg_date": "2025-02-27",
+  "expiry_date": "2026-09-30",
+  "storage_temp_min": null,
+  "storage_temp_max": 30,
+  "distortion_type": "perspective",
+  "distortion_severity": 3
+}

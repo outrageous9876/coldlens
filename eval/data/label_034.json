@@ -1,0 +1,10 @@
+{
+  "product": "Ibuprofen 400mg Tablets",
+  "batch_no": "8YQK94",
+  "mfg_date": "2022-08-01",
+  "expiry_date": "2024-12-31",
+  "storage_temp_min": 2,
+  "storage_temp_max": 8,
+  "distortion_type": "noise",
+  "distortion_severity": 2
+}

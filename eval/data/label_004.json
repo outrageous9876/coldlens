@@ -1,0 +1,10 @@
+{
+  "product": "Doxycycline 100mg Capsules",
+  "batch_no": "DD74539",
+  "mfg_date": "2022-10-01",
+  "expiry_date": "2026-08-19",
+  "storage_temp_min": null,
+  "storage_temp_max": 25,
+  "distortion_type": "blur",
+  "distortion_severity": 3
+}

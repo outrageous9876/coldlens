@@ -1,0 +1,10 @@
+{
+  "product": "Azithromycin 250mg Tablets",
+  "batch_no": "3749181",
+  "mfg_date": "2022-04-01",
+  "expiry_date": "2025-09-30",
+  "storage_temp_min": -20,
+  "storage_temp_max": -20,
+  "distortion_type": "noise",
+  "distortion_severity": 1
+}

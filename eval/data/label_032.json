@@ -1,0 +1,10 @@
+{
+  "product": "Cetirizine Syrup",
+  "batch_no": "IS8883",
+  "mfg_date": "2023-10-01",
+  "expiry_date": "2027-07-06",
+  "storage_temp_min": -20,
+  "storage_temp_max": -20,
+  "distortion_type": "glare",
+  "distortion_severity": 3
+}

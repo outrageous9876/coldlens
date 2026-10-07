@@ -1,0 +1,10 @@
+{
+  "product": "Paracetamol 500mg Tablets",
+  "batch_no": "341339",
+  "mfg_date": "2025-05-06",
+  "expiry_date": "2026-10-26",
+  "storage_temp_min": null,
+  "storage_temp_max": 30,
+  "distortion_type": "rotation",
+  "distortion_severity": 2
+}

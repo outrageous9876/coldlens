@@ -1,0 +1,10 @@
+{
+  "product": "Paracetamol 500mg Tablets",
+  "batch_no": "TW57784",
+  "mfg_date": "2023-07-01",
+  "expiry_date": "2026-12-21",
+  "storage_temp_min": 15,
+  "storage_temp_max": 30,
+  "distortion_type": "low_light",
+  "distortion_severity": 3
+}

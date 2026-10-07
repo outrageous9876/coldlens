@@ -1,0 +1,10 @@
+{
+  "product": "Cetirizine Syrup",
+  "batch_no": "L98557",
+  "mfg_date": "2024-05-05",
+  "expiry_date": "2026-12-31",
+  "storage_temp_min": null,
+  "storage_temp_max": 25,
+  "distortion_type": "perspective",
+  "distortion_severity": 1
+}

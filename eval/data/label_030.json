@@ -1,0 +1,10 @@
+{
+  "product": "Ibuprofen 400mg Tablets",
+  "batch_no": "ZORQQF",
+  "mfg_date": "2023-01-01",
+  "expiry_date": "2026-12-01",
+  "storage_temp_min": null,
+  "storage_temp_max": 25,
+  "distortion_type": "glare",
+  "distortion_severity": 1
+}

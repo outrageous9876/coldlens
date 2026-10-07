@@ -1,0 +1,10 @@
+{
+  "product": "Multivitamin Syrup",
+  "batch_no": "2236852",
+  "mfg_date": "2022-04-01",
+  "expiry_date": "2023-10-31",
+  "storage_temp_min": 2,
+  "storage_temp_max": 8,
+  "distortion_type": "glare",
+  "distortion_severity": 1
+}

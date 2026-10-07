@@ -1,0 +1,10 @@
+{
+  "product": "Ranitidine 150mg Tablets",
+  "batch_no": "SS12955",
+  "mfg_date": "2026-03-12",
+  "expiry_date": "2028-12-13",
+  "storage_temp_min": -20,
+  "storage_temp_max": -20,
+  "distortion_type": "perspective",
+  "distortion_severity": 2
+}

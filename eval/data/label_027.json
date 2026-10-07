@@ -1,0 +1,10 @@
+{
+  "product": "ORS Sachet",
+  "batch_no": "4522774",
+  "mfg_date": "2025-11-01",
+  "expiry_date": "2028-02-29",
+  "storage_temp_min": -20,
+  "storage_temp_max": -20,
+  "distortion_type": "perspective",
+  "distortion_severity": 1
+}
