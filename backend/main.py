@@ -4,11 +4,12 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, Query, UploadFile
 from fastapi.responses import FileResponse, JSONResponse
 
 from compliance import check_compliance
 from extract import extract_fields
+from fda import get_label
 from ocr import run_ocr
 from preprocess import preprocess, save_steps
 
@@ -75,3 +76,11 @@ async def analyze_endpoint(file: UploadFile = File(...)):
         "flags": flags,
         "preprocessed_image": preprocessed_image,
     }
+
+
+@app.get("/label")
+def label_endpoint(product: str = Query(..., min_length=2)):
+    label = get_label(product)
+    if label is None:
+        return JSONResponse(status_code=404, content={"error": f"no openFDA label found for {product!r}"})
+    return label

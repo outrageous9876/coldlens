@@ -8,3 +8,5 @@ groq
 pydantic
 python-dotenv
 python-multipart
+httpx
+sentence-transformers
