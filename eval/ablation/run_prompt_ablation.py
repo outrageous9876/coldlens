@@ -41,6 +41,25 @@ NARROW_PROMPT = OLD_PROMPT.replace(ANCHOR, ANCHOR + NARROW_RULE + "\n", 1)
 
 PROMPTS = {"old_prompt": OLD_PROMPT, "narrow_prompt": NARROW_PROMPT}
 
+# Hard stop so this run can't eat the whole 200k tokens/day Groq quota:
+# count real usage from every response and abort past MAX_RUN_TOKENS
+# (finished results stay cached, so a rerun resumes where this stopped).
+MAX_RUN_TOKENS = 140_000
+tokens_used = 0
+_original_call = extract._call_groq_with_retry
+
+
+def _counting_call(**kwargs):
+    global tokens_used
+    if tokens_used >= MAX_RUN_TOKENS:
+        raise SystemExit(f"Token cap reached ({tokens_used} >= {MAX_RUN_TOKENS}), stopping.")
+    response = _original_call(**kwargs)
+    tokens_used += response.usage.total_tokens
+    return response
+
+
+extract._call_groq_with_retry = _counting_call
+
 
 def use_prompt(prompt):
     extract.SYSTEM_PROMPT = prompt
@@ -82,7 +101,7 @@ def main():
                 rows.append({"field": f, "match": matches[f],
                              "match_fuzzy": ratio >= FUZZY_PRODUCT_THRESHOLD if f == "product" else matches[f]})
         results[name] = rows
-        print(f"{name} done - {fresh} fresh calls so far", flush=True)
+        print(f"{name} done - {fresh} fresh calls, {tokens_used} tokens so far", flush=True)
 
     baseline = [r for r in load_baseline(BASELINE_CSV) if r["variant"] == BEFORE_AFTER_VARIANT]
     cols = {"baseline (committed run)": baseline, **results}
@@ -95,7 +114,7 @@ def main():
         return sum(acc(rows, f, key) for f in FIELDS) / len(FIELDS)
 
     lines = ["# Prompt ablation (restored OCR, full_no_threshold)\n",
-             f"Fresh Groq calls this run: {fresh}.\n",
+             f"Fresh Groq calls this run: {fresh} ({tokens_used} tokens).\n",
              "| Field | " + " | ".join(cols) + " |", "|---" * (len(cols) + 1) + "|"]
     for f in FIELDS:
         lines.append(f"| {f} | " + " | ".join(f"{acc(r, f):.0%}" for r in cols.values()) + " |")
