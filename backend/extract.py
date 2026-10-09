@@ -42,6 +42,10 @@ Return ONLY a JSON object with exactly these keys, no others:
 
 Rules:
 - If a field is not present in the text, use null. Never guess or invent a value.
+- OCR often misreads digits in the dose inside the product name \
+(e.g. "50Omg" or "SOOmg" is really "500mg"). In that dose ONLY, read O/o as 0 \
+and S as 5. Do not apply this correction to any other field - leave batch \
+numbers, dates and temperatures exactly as the rules below say.
 - Dates on labels come in many formats (MM/YYYY, MMM.YYYY, "EXP 12/26", \
 DD/MM/YYYY, "20/6/2020", etc). Normalize all dates to ISO YYYY-MM-DD.
 - If a date only gives month and year (no day), use the FIRST day of that \

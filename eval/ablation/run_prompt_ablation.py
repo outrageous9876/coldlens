@@ -34,10 +34,11 @@ NARROW_RULE = """- OCR often misreads digits in the dose inside the product name
 and S as 5. Do not apply this correction to any other field - leave batch \
 numbers, dates and temperatures exactly as the rules below say."""
 
-ANCHOR = "- If a field is not present in the text, use null. Never guess or invent a value.\n"
-OLD_PROMPT = extract.SYSTEM_PROMPT
-assert ANCHOR in OLD_PROMPT
-NARROW_PROMPT = OLD_PROMPT.replace(ANCHOR, ANCHOR + NARROW_RULE + "\n", 1)
+# The narrow rule is now the default prompt (extract.SYSTEM_PROMPT); the
+# old prompt is that minus the rule.
+NARROW_PROMPT = extract.SYSTEM_PROMPT
+assert NARROW_RULE + "\n" in NARROW_PROMPT
+OLD_PROMPT = NARROW_PROMPT.replace(NARROW_RULE + "\n", "", 1)
 
 PROMPTS = {"old_prompt": OLD_PROMPT, "narrow_prompt": NARROW_PROMPT}
 
