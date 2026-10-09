@@ -1,0 +1,15 @@
+{
+  "product": "Azithromycin 500 mg Tablets",
+  "batch_no": "AZM5L042",
+  "mfg_date": "2025-06-04",
+  "expiry_date": "2027-05-31",
+  "storage_temp_min": null,
+  "storage_temp_max": 25,
+  "style": "carton_flap",
+  "effects": {
+    "angle": -5,
+    "persp": 0.15,
+    "shadow": 0.35,
+    "blur": 0.4
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "product": "Paracetamol 650 mg",
+  "batch_no": "PCT24187",
+  "mfg_date": "2025-03-12",
+  "expiry_date": "2028-02-28",
+  "storage_temp_min": null,
+  "storage_temp_max": 30,
+  "style": "blister",
+  "effects": {
+    "angle": 8,
+    "persp": 0.08,
+    "glare": 0.55,
+    "blur": 0.6
+  }
+}

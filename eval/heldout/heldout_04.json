@@ -1,0 +1,15 @@
+{
+  "product": "Cetirizine Oral Solution",
+  "batch_no": "CTZ-1173",
+  "mfg_date": "2025-01-20",
+  "expiry_date": "2027-12-31",
+  "storage_temp_min": null,
+  "storage_temp_max": 30,
+  "style": "bottle",
+  "effects": {
+    "angle": -12,
+    "cyl": 0.35,
+    "dark": 0.6,
+    "blur": 0.7
+  }
+}

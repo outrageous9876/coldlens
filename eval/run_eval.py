@@ -13,16 +13,21 @@ so each variant is just a cumulative point along that one pass:
   full_pipeline      -> "adaptive_threshold" snapshot (everything)
 
 Usage: python run_eval.py
+       python run_eval.py --data eval/heldout [--dry-run]
+         held-out set: runs ONLY the current /analyze pipeline and writes
+         eval/RESULTS_HELDOUT.md (see run_heldout below)
 Output: eval/results.csv (long format, one row per image/variant/field)
         eval/RESULTS.md  (human-readable summary)
 """
 
+import argparse
 import csv
 import json
 import re
 import sys
 import time
 from collections import defaultdict
+from datetime import date
 from pathlib import Path
 
 import cv2
@@ -31,7 +36,8 @@ from rapidfuzz import fuzz
 BACKEND_DIR = Path(__file__).resolve().parent.parent / "backend"
 sys.path.insert(0, str(BACKEND_DIR))
 
-from extract import extract_fields, is_cached  # noqa: E402
+from compliance import check_compliance  # noqa: E402
+from extract import LabelFields, extract_fields, is_cached  # noqa: E402
 from ocr import run_ocr  # noqa: E402
 from preprocess import preprocess  # noqa: E402
 
@@ -110,9 +116,9 @@ def compare(extracted: dict, ground_truth: dict) -> dict:
     }
 
 
-def load_samples():
+def load_samples(data_dir=DATA_DIR):
     samples = []
-    for json_path in sorted(DATA_DIR.glob("label_*.json")):
+    for json_path in sorted(data_dir.glob("*.json")):
         img_path = json_path.with_suffix(".jpg")
         if not img_path.exists():
             continue
@@ -335,5 +341,124 @@ def write_markdown(rows, api_calls_made, api_calls_cached, baseline_rows=None):
     RESULTS_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def run_heldout(data_dir: Path, dry_run: bool):
+    """Held-out set: ground truth has "style"/"effects" instead of
+    distortion_type, and only the current default pipeline is run
+    (the same preprocessing steps /analyze uses)."""
+    from main import ANALYZE_STEPS  # imported here: main pulls in FastAPI
+
+    samples = load_samples(data_dir)
+    print(f"{len(samples)} held-out images from {data_dir}, steps={ANALYZE_STEPS}")
+
+    ocr_texts = {}
+    for sample_id, img_path, _ in samples:
+        final_image, _ = preprocess(cv2.imread(str(img_path)), enabled_steps=ANALYZE_STEPS)
+        ocr_texts[sample_id] = run_ocr(final_image)["full_text"]
+    uncached = {t for t in ocr_texts.values() if not is_cached(t)}
+    print(f"GROQ BUDGET: {len(uncached)} fresh calls (~700 tokens each, ~{len(uncached) * 700} tokens)")
+    if dry_run:
+        return
+
+    rows, flag_rows, fresh = [], [], 0
+    for sample_id, _, gt in samples:
+        text = ocr_texts[sample_id]
+        was_cached = is_cached(text)
+        fields = extract_fields(text)
+        if not was_cached:
+            fresh += 1
+            time.sleep(CALL_DELAY_SECONDS)
+        extracted = fields.model_dump()
+        matches = compare(extracted, gt)
+        ratio = product_fuzzy_ratio(extracted.get("product"), gt.get("product"))
+        for field in FIELDS:
+            rows.append({
+                "image_id": sample_id, "style": gt["style"], "field": field,
+                "extracted": extracted.get(field), "expected": gt.get(field),
+                "match": matches[field],
+                "match_fuzzy": ratio >= FUZZY_PRODUCT_THRESHOLD if field == "product" else matches[field],
+                "fuzzy_ratio": round(ratio, 1) if field == "product" else "",
+            })
+
+        # Expected flags = the same compliance rules applied to the ground truth, today.
+        expected_flags = check_compliance(LabelFields(**{f: gt.get(f) for f in FIELDS}))
+        got_flags = check_compliance(fields)
+        flag_rows.append({
+            "image_id": sample_id, "style": gt["style"],
+            "expected": expected_flags, "got": got_flags,
+            "wrong": [k for k in expected_flags if expected_flags[k] != got_flags[k]],
+        })
+        print(f"{sample_id} done ({gt['style']}) - {fresh} fresh calls", flush=True)
+
+    write_heldout_markdown(data_dir, rows, flag_rows, fresh)
+    print(f"\nDone. {fresh} fresh Groq calls. Wrote {HELDOUT_MD}")
+
+
+HELDOUT_MD = Path(__file__).resolve().parent / "RESULTS_HELDOUT.md"
+
+
+def _fmt_flags(flags):
+    on = [k for k, v in flags.items() if v]
+    return ", ".join(on) if on else "none"
+
+
+def write_heldout_markdown(data_dir, rows, flag_rows, fresh):
+    def field_acc(subset, field, key):
+        return accuracy([r for r in subset if r["field"] == field], key)
+
+    def overall(subset, key):
+        return sum(field_acc(subset, f, key) for f in FIELDS) / len(FIELDS)
+
+    n = len(flag_rows)
+    lines = ["# ColdLens Held-out Evaluation\n",
+             f"{n} images from `{data_dir.name}/` (independent generator: foil blisters, inkjet "
+             "dot-matrix stamps, curved vials/bottles, carton flaps, shadows, glare). Current default "
+             "pipeline only: /analyze preprocessing, current ocr.py and extraction prompt.",
+             f"Groq API usage this run: {fresh} fresh calls. Compliance flags evaluated as of "
+             f"{date.today().isoformat()}.\n",
+             "## Per-field accuracy\n",
+             "| Field | Strict | Fuzzy* |", "|---|---|---|"]
+    for field in FIELDS:
+        lines.append(f"| {field} | {field_acc(rows, field, 'match'):.0%} | {field_acc(rows, field, 'match_fuzzy'):.0%} |")
+    lines.append(f"| **Overall** | **{overall(rows, 'match'):.0%}** | **{overall(rows, 'match_fuzzy'):.0%}** |")
+    lines.append(f"\n*fuzzy = strict for every field except product (rapidfuzz ratio >= {FUZZY_PRODUCT_THRESHOLD}).\n")
+
+    lines += ["## Per-style breakdown\n",
+              "| Style | n | Overall (strict) | Overall (fuzzy) | Flags correct |", "|---|---|---|---|---|"]
+    for style in sorted({r["style"] for r in flag_rows}):
+        subset = [r for r in rows if r["style"] == style]
+        flags = [f for f in flag_rows if f["style"] == style]
+        ok = sum(1 for f in flags if not f["wrong"])
+        lines.append(f"| {style} | {len(flags)} | {overall(subset, 'match'):.0%} | "
+                     f"{overall(subset, 'match_fuzzy'):.0%} | {ok}/{len(flags)} |")
+
+    mismatches = [r for r in rows if not r["match"]]
+    lines += [f"\n## Every mismatch ({len(mismatches)} of {len(rows)} fields, strict)\n",
+              "| Image | Style | Field | Expected | Extracted | Fuzzy OK? |", "|---|---|---|---|---|---|"]
+    for r in mismatches:
+        if r["field"] == "product":
+            fuzzy = f"{'yes' if r['match_fuzzy'] else 'no'} ({r['fuzzy_ratio']})"
+        else:
+            fuzzy = "-"
+        lines.append(f"| {r['image_id']} | {r['style']} | {r['field']} | {r['expected']} | {r['extracted']} | {fuzzy} |")
+
+    ok = sum(1 for f in flag_rows if not f["wrong"])
+    lines += [f"\n## Compliance flags ({ok}/{n} images fully correct)\n",
+              "Expected = the same compliance rules applied to the ground-truth fields.\n",
+              "| Image | Style | Expected flags | Got flags | Correct? |", "|---|---|---|---|---|"]
+    for f in flag_rows:
+        verdict = "yes" if not f["wrong"] else "NO - " + ", ".join(f["wrong"])
+        lines.append(f"| {f['image_id']} | {f['style']} | {_fmt_flags(f['expected'])} | "
+                     f"{_fmt_flags(f['got'])} | {verdict} |")
+
+    HELDOUT_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data", type=Path, help="held-out data dir, e.g. eval/heldout")
+    parser.add_argument("--dry-run", action="store_true", help="OCR only, print Groq budget")
+    args = parser.parse_args()
+    if args.data:
+        run_heldout(args.data.resolve(), args.dry_run)
+    else:
+        main()

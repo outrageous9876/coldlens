@@ -1,0 +1,14 @@
+{
+  "product": "Metformin 500 mg Tablets",
+  "batch_no": "MTF0925B",
+  "mfg_date": "2025-09-02",
+  "expiry_date": "2027-08-31",
+  "storage_temp_min": null,
+  "storage_temp_max": 25,
+  "style": "side_panel",
+  "effects": {
+    "angle": 17,
+    "persp": 0.05,
+    "blur": 0.3
+  }
+}

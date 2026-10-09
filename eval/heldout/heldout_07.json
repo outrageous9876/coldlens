@@ -1,0 +1,16 @@
+{
+  "product": "Insulin Glargine Injection 100 IU/mL",
+  "batch_no": "IGL7F203",
+  "mfg_date": "2025-07-03",
+  "expiry_date": "2027-06-30",
+  "storage_temp_min": 2,
+  "storage_temp_max": 8,
+  "style": "vial",
+  "effects": {
+    "angle": -6,
+    "cyl": 0.5,
+    "shadow": 0.3,
+    "dark": 0.75,
+    "blur": 0.6
+  }
+}

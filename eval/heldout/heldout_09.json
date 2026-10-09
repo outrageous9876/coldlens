@@ -1,0 +1,15 @@
+{
+  "product": "Oral Rehydration Salts Solution",
+  "batch_no": "ORS2208K",
+  "mfg_date": "2025-08-22",
+  "expiry_date": "2026-11-30",
+  "storage_temp_min": null,
+  "storage_temp_max": 30,
+  "style": "bottle",
+  "effects": {
+    "angle": 4,
+    "cyl": 0.3,
+    "glare": 0.5,
+    "blur": 0.8
+  }
+}

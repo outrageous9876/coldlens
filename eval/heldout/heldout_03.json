@@ -1,0 +1,15 @@
+{
+  "product": "Hepatitis B Vaccine (rDNA)",
+  "batch_no": "HBV2509A",
+  "mfg_date": "2025-09-15",
+  "expiry_date": "2027-08-31",
+  "storage_temp_min": 2,
+  "storage_temp_max": 8,
+  "style": "vial",
+  "effects": {
+    "angle": 3,
+    "cyl": 0.45,
+    "glare": 0.35,
+    "blur": 0.5
+  }
+}

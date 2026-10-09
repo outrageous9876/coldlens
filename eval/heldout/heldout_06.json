@@ -1,0 +1,15 @@
+{
+  "product": "Ibuprofen 400 mg",
+  "batch_no": "IBU41108",
+  "mfg_date": "2024-11-08",
+  "expiry_date": "2026-10-31",
+  "storage_temp_min": null,
+  "storage_temp_max": 25,
+  "style": "blister",
+  "effects": {
+    "angle": -22,
+    "persp": 0.12,
+    "glare": 0.4,
+    "blur": 1.0
+  }
+}
