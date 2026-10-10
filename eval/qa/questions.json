@@ -1,0 +1,102 @@
+[
+  {
+    "id": "q01",
+    "product": "Lantus",
+    "question": "How should this be stored?",
+    "in_label": true,
+    "expected_answer": "Unopened: refrigerate at 36-46°F (2-8°C), do not freeze. Opened vial: refrigerated or room temperature (up to 86°F/30°C) for 28 days. Opened SoloStar pen: room temperature only, do not refrigerate, 28 days.",
+    "expected_sections": ["storage_and_handling"],
+    "source_quote": "Store unused LANTUS in a refrigerator between 36°F and 46°F (2°C and 8°C). Do not freeze. ... 10 mL multiple-dose vial Until expiration date 28 days 28 days Refrigerated or room temperature 3 mL single-patient-use SoloStar prefilled pen Until expiration date 28 days 28 days Room temperature only (Do not refrigerate)",
+    "key_facts": [["2-8", "2 to 8", "2°c and 8°c", "36-46", "36°f and 46°f", "36°f-46°f"], ["28 days"], ["room temperature only", "do not refrigerate"]]
+  },
+  {
+    "id": "q02",
+    "product": "Lantus",
+    "question": "Can it be frozen?",
+    "in_label": true,
+    "expected_answer": "No. Do not freeze; discard Lantus if it has been frozen.",
+    "expected_sections": ["storage_and_handling"],
+    "source_quote": "Do not freeze. Discard LANTUS if it has been frozen.",
+    "key_facts": [["not freeze", "not be frozen", "never freeze", "no,"], ["discard"]]
+  },
+  {
+    "id": "q03",
+    "product": "Lantus",
+    "question": "Can Lantus be mixed with other insulins?",
+    "in_label": true,
+    "expected_answer": "No. Do not dilute or mix Lantus with any other insulin or solution.",
+    "expected_sections": ["dosage_and_administration"],
+    "source_quote": "Do not dilute or mix LANTUS with any other insulin or solution.",
+    "key_facts": [["not dilute or mix", "not be diluted or mixed", "not be mixed", "not mix", "no,", "no -", "no."]]
+  },
+  {
+    "id": "q04",
+    "product": "amoxicillin",
+    "question": "How long can the mixed oral suspension be kept?",
+    "in_label": true,
+    "expected_answer": "Discard any unused reconstituted suspension after 14 days; refrigeration is preferable but not required.",
+    "expected_sections": ["dosage_and_administration"],
+    "source_quote": "Any unused portion of the reconstituted suspension must be discarded after 14 days. Refrigeration is preferable, but not required.",
+    "key_facts": [["14 days"]]
+  },
+  {
+    "id": "q05",
+    "product": "amoxicillin",
+    "question": "What are the most common side effects?",
+    "in_label": true,
+    "expected_answer": "Diarrhea, rash, vomiting and nausea (each >1% in clinical trials).",
+    "expected_sections": ["adverse_reactions"],
+    "source_quote": "The most common adverse reactions (greater than 1%) observed in clinical trials of amoxicillin tablets or oral suspension were diarrhea, rash, vomiting, and nausea.",
+    "key_facts": [["diarrhea"], ["rash"], ["vomiting"], ["nausea"]]
+  },
+  {
+    "id": "q06",
+    "product": "metformin",
+    "question": "Who should not take metformin?",
+    "in_label": true,
+    "expected_answer": "People with severe renal impairment (eGFR below 30 mL/min/1.73 m2), hypersensitivity to metformin, or acute/chronic metabolic acidosis including diabetic ketoacidosis.",
+    "expected_sections": ["contraindications"],
+    "source_quote": "Metformin hydrochloride extended-release tablets are contraindicated in patients with: Severe renal impairment (eGFR below 30 mL/min/1.73 m2) ... Hypersensitivity to metformin. Acute or chronic metabolic acidosis, including diabetic ketoacidosis, with or without coma.",
+    "key_facts": [["renal", "kidney"], ["30"], ["hypersensitivity", "hypersensitive", "allerg"], ["acidosis"]]
+  },
+  {
+    "id": "q07",
+    "product": "metformin",
+    "question": "What serious risk does the label warn about?",
+    "in_label": true,
+    "expected_answer": "Lactic acidosis - postmarketing cases of metformin-associated lactic acidosis, including fatal cases.",
+    "expected_sections": ["warnings", "adverse_reactions"],
+    "source_quote": "There have been postmarketing cases of metformin-associated lactic acidosis, including fatal cases.",
+    "key_facts": [["lactic acidosis"]]
+  },
+  {
+    "id": "q08",
+    "product": "Lantus",
+    "question": "What is the price?",
+    "in_label": false,
+    "expected_answer": "Not found in the official FDA label.",
+    "expected_sections": [],
+    "source_quote": null,
+    "key_facts": []
+  },
+  {
+    "id": "q09",
+    "product": "amoxicillin",
+    "question": "Who invented amoxicillin?",
+    "in_label": false,
+    "expected_answer": "Not found in the official FDA label.",
+    "expected_sections": [],
+    "source_quote": null,
+    "key_facts": []
+  },
+  {
+    "id": "q10",
+    "product": "metformin",
+    "question": "Is metformin safe to give to my dog?",
+    "in_label": false,
+    "expected_answer": "Not found in the official FDA label.",
+    "expected_sections": [],
+    "source_quote": null,
+    "key_facts": []
+  }
+]

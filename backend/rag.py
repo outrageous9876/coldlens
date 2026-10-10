@@ -90,7 +90,11 @@ excerpts from its official FDA label given below.
 Rules:
 - Use only facts stated in the excerpts. No outside knowledge, no guessing.
 - Cite every fact with the excerpt number(s) in square brackets, e.g. [2].
-- Keep the answer short: 1-4 sentences, plain language.
+- If the excerpts give different instructions for different presentations \
+or states (e.g. vial vs. pen vs. cartridge, opened vs. unopened, in-use vs. \
+not in-use), answer separately for each one and never merge them into a \
+single rule.
+- Keep the answer short: 1-4 sentences per presentation, plain language.
 - If the excerpts do not contain the answer, set "found" to false.
 
 Return ONLY a JSON object: {"found": true/false, "answer": "...", "citations": [numbers used]}"""
@@ -104,14 +108,23 @@ def _load_qa_cache() -> dict:
     return {}
 
 
+def _answer_key(question: str, label: dict, k: int) -> str:
+    return hashlib.sha256(f"{QA_MODEL}:{_QA_PROMPT_HASH}:{label.get('set_id')}:{k}:"
+                          f"{question.strip().lower()}".encode("utf-8")).hexdigest()
+
+
+def is_answer_cached(question: str, label: dict, k: int = 4) -> bool:
+    """Would answer() hit the cache? (lets the eval print a Groq budget)"""
+    return _answer_key(question, label, k) in _load_qa_cache()
+
+
 def answer(question: str, label: dict, k: int = 4) -> dict:
     """Answer a question from the label's top-k chunks, with citations.
 
     Returns {"found": bool, "answer": str, "citations": [{"n", "section", "text", "score"}]}
     """
     question = question.strip()
-    key = hashlib.sha256(f"{QA_MODEL}:{_QA_PROMPT_HASH}:{label.get('set_id')}:{k}:"
-                         f"{question.lower()}".encode("utf-8")).hexdigest()
+    key = _answer_key(question, label, k)
     cache = _load_qa_cache()
     if key in cache:
         return cache[key]
