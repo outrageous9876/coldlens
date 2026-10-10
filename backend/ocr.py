@@ -16,6 +16,14 @@ _reader = easyocr.Reader(["en"])
 # to slightly worse. Both are off by default; raw EasyOCR order wins.
 MIN_CONFIDENCE = 0.0
 
+# Rotation fallback: a sideways label still produces ~20 junk boxes, so
+# line count alone doesn't catch it - low average confidence does. On the
+# eval sets every normal image averages >= 0.68; sideways/badly shadowed
+# ones fall around 0.4.
+ROTATION_ANGLES = [90, 180, 270]
+FALLBACK_MIN_LINES = 3
+FALLBACK_MIN_MEAN_CONFIDENCE = 0.5
+
 
 def _y_range(line):
     ys = [p[1] for p in line["bbox"]]
@@ -54,9 +62,33 @@ def _group_into_rows(lines):
     return [row["lines"] for row in rows]
 
 
-def run_ocr(image, min_confidence=MIN_CONFIDENCE, group_rows=False):
+def _read(image, rotation_info=None):
+    return [
+        {
+            "text": text,
+            "confidence": round(float(confidence), 4),
+            "bbox": [[int(x), int(y)] for x, y in box],
+        }
+        for box, text, confidence in _reader.readtext(image, rotation_info=rotation_info)
+    ]
+
+
+def _mean_confidence(lines):
+    return sum(line["confidence"] for line in lines) / len(lines) if lines else 0.0
+
+
+def run_ocr(image, min_confidence=MIN_CONFIDENCE, group_rows=False, rotation_fallback=False):
     """
     Run OCR on an image (numpy array - EasyOCR accepts grayscale or BGR).
+
+    Rotation fallback is OFF by default until the held-out ablation
+    (eval/ablation/run_fix_ablation.py) shows it helps. When on: normal
+    OCR runs first. Only if it finds very little readable text
+    (fewer than FALLBACK_MIN_LINES lines, or mean confidence below
+    FALLBACK_MIN_MEAN_CONFIDENCE) and rotation_fallback is on, OCR runs
+    again with EasyOCR's rotation_info (each box also tried at 90/180/270
+    degrees - about 4x slower), and the more confident of the two passes
+    is kept. So normal uploads stay fast and sideways labels get read.
 
     Optional (both off by default, see MIN_CONFIDENCE): drop lines below
     min_confidence, and with group_rows=True reorder boxes into visual rows
@@ -71,23 +103,22 @@ def run_ocr(image, min_confidence=MIN_CONFIDENCE, group_rows=False):
                 {"text": str, "confidence": float, "bbox": [[x, y], ...]},
                 ...
             ],
+            "rotation_retry": bool,  # True if the rotated pass was used
         }
     """
-    results = _reader.readtext(image)
+    raw = _read(image)
+    rotation_retry = False
+    if rotation_fallback and (len(raw) < FALLBACK_MIN_LINES
+                              or _mean_confidence(raw) < FALLBACK_MIN_MEAN_CONFIDENCE):
+        rotated = _read(image, rotation_info=ROTATION_ANGLES)
+        if _mean_confidence(rotated) > _mean_confidence(raw):
+            raw, rotation_retry = rotated, True
 
-    lines = [
-        {
-            "text": text,
-            "confidence": round(float(confidence), 4),
-            "bbox": [[int(x), int(y)] for x, y in box],
-        }
-        for box, text, confidence in results
-        if confidence >= min_confidence
-    ]
+    lines = [line for line in raw if line["confidence"] >= min_confidence]
 
     # group_rows=False keeps EasyOCR's raw detection order, one box per line.
     rows = _group_into_rows(lines) if group_rows else [[line] for line in lines]
     ordered_lines = [line for row in rows for line in row]
     full_text = "\n".join(" ".join(line["text"] for line in row) for row in rows)
 
-    return {"full_text": full_text, "lines": ordered_lines}
+    return {"full_text": full_text, "lines": ordered_lines, "rotation_retry": rotation_retry}

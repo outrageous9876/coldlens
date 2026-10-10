@@ -72,7 +72,7 @@ def main():
     texts = {}
     for i, (sample_id, img_path, _) in enumerate(samples, start=1):
         _, steps = preprocess(cv2.imread(str(img_path)))
-        texts[sample_id] = run_ocr(steps["deskew"])["full_text"]  # full_no_threshold
+        texts[sample_id] = run_ocr(steps["deskew"], rotation_fallback=False)["full_text"]  # full_no_threshold
         print(f"OCR {i}/{len(samples)} {sample_id}", flush=True)
 
     budget = 0

@@ -34,8 +34,8 @@ from run_eval import (BASELINE_CSV, BEFORE_AFTER_VARIANT, CALL_DELAY_SECONDS, FI
 
 CONFIGS = {
     "a_old_ocr": lambda img: ocr_old.run_ocr(img),
-    "b_rows_no_conf": lambda img: run_ocr(img, min_confidence=0.0, group_rows=True),
-    "c_current": lambda img: run_ocr(img, min_confidence=0.3, group_rows=True),
+    "b_rows_no_conf": lambda img: run_ocr(img, min_confidence=0.0, group_rows=True, rotation_fallback=False),
+    "c_current": lambda img: run_ocr(img, min_confidence=0.3, group_rows=True, rotation_fallback=False),
 }
 
 
