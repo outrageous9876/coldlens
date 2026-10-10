@@ -46,14 +46,14 @@ def clean_product_name(name: str) -> str:
     return re.sub(r"\s+", " ", name).strip()
 
 
-def _search(field: str, term: str) -> list[dict]:
-    """One openFDA query, cached to disk by its search string."""
-    search = f'openfda.{field}:"{term}"'
-    cache_path = CACHE_DIR / f"{hashlib.sha256(search.lower().encode()).hexdigest()[:20]}.json"
+def query(url: str, search: str, limit: int = 20) -> list[dict]:
+    """One openFDA query (any endpoint), cached to disk by URL + search."""
+    cache_key = f"{url}|{search.lower()}|{limit}"
+    cache_path = CACHE_DIR / f"{hashlib.sha256(cache_key.encode()).hexdigest()[:20]}.json"
     if cache_path.exists():
         return json.loads(cache_path.read_text(encoding="utf-8"))
 
-    response = httpx.get(API_URL, params={"search": search, "limit": 20}, timeout=20)
+    response = httpx.get(url, params={"search": search, "limit": limit}, timeout=20)
     if response.status_code == 404:  # openFDA's way of saying "no matches"
         results = []
     else:
@@ -63,6 +63,10 @@ def _search(field: str, term: str) -> list[dict]:
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     cache_path.write_text(json.dumps(results), encoding="utf-8")
     return results
+
+
+def _search(field: str, term: str) -> list[dict]:
+    return query(API_URL, f'openfda.{field}:"{term}"')
 
 
 def _score(label: dict, term: str) -> tuple:

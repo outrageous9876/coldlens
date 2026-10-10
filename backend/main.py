@@ -6,12 +6,15 @@ import cv2
 import numpy as np
 from fastapi import FastAPI, File, Query, UploadFile
 from fastapi.responses import FileResponse, JSONResponse
+from pydantic import BaseModel, Field
 
 from compliance import check_compliance
 from extract import extract_fields
 from fda import get_label
 from ocr import run_ocr
 from preprocess import preprocess, save_steps
+from rag import answer
+from recall import check_recalls
 
 app = FastAPI(title="ColdLens API")
 
@@ -78,9 +81,45 @@ async def analyze_endpoint(file: UploadFile = File(...)):
     }
 
 
+NO_MATCH_NOTE = "openFDA only covers US-marketed products, so labels sold elsewhere often have no match."
+
+
+def _no_label(product: str) -> JSONResponse:
+    return JSONResponse(status_code=404, content={
+        "error": f"no openFDA label found for {product!r}",
+        "note": NO_MATCH_NOTE,
+    })
+
+
 @app.get("/label")
 def label_endpoint(product: str = Query(..., min_length=2)):
     label = get_label(product)
     if label is None:
-        return JSONResponse(status_code=404, content={"error": f"no openFDA label found for {product!r}"})
+        return _no_label(product)
     return label
+
+
+class AskRequest(BaseModel):
+    product_name: str = Field(..., min_length=2)
+    question: str = Field(..., min_length=3)
+
+
+@app.post("/ask")
+def ask_endpoint(request: AskRequest):
+    label = get_label(request.product_name)
+    if label is None:
+        return _no_label(request.product_name)
+    result = answer(request.question, label)
+    return {
+        "answer": result["answer"],
+        "found": result["found"],
+        "citations": result["citations"],
+        "matched_label": {key: label[key] for key in ("brand_name", "generic_name", "manufacturer", "set_id")},
+    }
+
+
+@app.get("/recalls")
+def recalls_endpoint(product: str = Query(..., min_length=2), batch: str | None = None):
+    result = check_recalls(product, batch)
+    result["note"] = NO_MATCH_NOTE
+    return result

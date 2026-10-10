@@ -242,6 +242,86 @@
     font-weight: 600;
     margin: 0 0 14px;
   }
+
+  /* ---------- Official FDA label card ---------- */
+  .badge.recalled { background: #dc2626; }
+  .badge.recalls { background: #ea580c; }
+  .badge.norecalls { background: #16a34a; }
+
+  .muted { color: var(--muted); font-size: 0.9rem; }
+
+  .fda-name { font-size: 1.1rem; font-weight: 600; margin: 14px 0 2px; }
+
+  .fda-excerpt {
+    margin: 10px 0 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .fda-excerpt b { font-weight: 600; }
+
+  .note {
+    display: none;
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #fff7e6;
+    border: 1px solid #f5d79e;
+    color: #7a5200;
+    font-size: 0.88rem;
+  }
+
+  .recall-item {
+    border-top: 1px solid var(--border);
+    padding: 10px 0;
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+
+  .recall-item .match { color: #dc2626; font-weight: 700; }
+
+  .qa-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .qa-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font: inherit;
+    color: var(--text);
+    background: var(--card);
+  }
+
+  .qa-row button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .qa-row button:hover { background: var(--accent-dark); }
+  .qa-row button:disabled { opacity: 0.6; cursor: default; }
+
+  #qaAnswer { margin-top: 14px; font-size: 0.95rem; line-height: 1.5; }
+
+  .citation {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-left: 3px solid var(--accent);
+    background: #f8f9fb;
+    font-size: 0.82rem;
+    color: #3b4556;
+  }
+
+  .citation b { color: var(--text); }
 </style>
 </head>
 <body>
@@ -294,6 +374,29 @@
         <summary>Raw OCR text</summary>
         <pre id="ocrText"></pre>
       </details>
+    </div>
+
+    <div class="card">
+      <p class="section-title">Official FDA label</p>
+      <div id="fdaStatus" class="muted"></div>
+      <div class="badges" id="recallBadges"></div>
+      <div id="fdaLabel"></div>
+      <div id="fdaNote" class="note"></div>
+      <details id="recallDetails" style="display: none">
+        <summary>Recall details</summary>
+        <div id="recallList"></div>
+      </details>
+
+      <div id="qaBox" style="display: none">
+        <details open>
+          <summary>Ask the label</summary>
+          <form id="qaForm" class="qa-row">
+            <input id="qaInput" placeholder="e.g. How should this be stored?" autocomplete="off">
+            <button type="submit" id="qaButton">Ask</button>
+          </form>
+          <div id="qaAnswer"></div>
+        </details>
+      </div>
     </div>
   </div>
 </div>
@@ -434,6 +537,7 @@
       ocrTextEl.textContent = (data.ocr && data.ocr.full_text) || "(no text detected)";
 
       resultsEl.style.display = "block";
+      loadFda(data.fields || {});  // not awaited: the label card fills in on its own
     } catch (err) {
       errorEl.textContent = err.message || "Something went wrong analyzing this image.";
       errorEl.style.display = "block";
@@ -441,6 +545,138 @@
       statusEl.classList.remove("visible");
     }
   }
+
+  // ---------- Official FDA label: label card, recall badge, Q&A ----------
+  const fdaStatus = document.getElementById("fdaStatus");
+  const recallBadges = document.getElementById("recallBadges");
+  const fdaLabel = document.getElementById("fdaLabel");
+  const fdaNote = document.getElementById("fdaNote");
+  const recallDetails = document.getElementById("recallDetails");
+  const recallList = document.getElementById("recallList");
+  const qaBox = document.getElementById("qaBox");
+  const qaForm = document.getElementById("qaForm");
+  const qaInput = document.getElementById("qaInput");
+  const qaButton = document.getElementById("qaButton");
+  const qaAnswer = document.getElementById("qaAnswer");
+  let currentProduct = null;
+
+  function el(tag, text, className) {
+    const node = document.createElement(tag);
+    if (text !== undefined) node.textContent = text;
+    if (className) node.className = className;
+    return node;
+  }
+
+  function showNote(text) {
+    fdaNote.textContent = text;
+    fdaNote.style.display = "block";
+  }
+
+  async function loadFda(fields) {
+    fdaLabel.innerHTML = "";
+    recallBadges.innerHTML = "";
+    recallList.innerHTML = "";
+    qaAnswer.innerHTML = "";
+    fdaNote.style.display = "none";
+    recallDetails.style.display = "none";
+    qaBox.style.display = "none";
+
+    currentProduct = fields.product;
+    if (!currentProduct) {
+      fdaStatus.textContent = "No product name was extracted, so the openFDA lookup was skipped.";
+      return;
+    }
+    fdaStatus.textContent = `Looking up "${currentProduct}" on openFDA…`;
+
+    const recallParams = new URLSearchParams({ product: currentProduct });
+    if (fields.batch_no) recallParams.set("batch", fields.batch_no);
+
+    try {
+      const [labelRes, recallRes] = await Promise.all([
+        fetch(`/label?${new URLSearchParams({ product: currentProduct })}`),
+        fetch(`/recalls?${recallParams}`),
+      ]);
+      fdaStatus.textContent = "";
+      renderRecalls(recallRes.ok ? await recallRes.json() : null, fields.batch_no);
+
+      const labelBody = await labelRes.json().catch(() => ({}));
+      if (labelRes.status === 404) {
+        showNote(`No official FDA label matched "${currentProduct}". ${labelBody.note || ""}`);
+        return;
+      }
+      if (!labelRes.ok) throw new Error(labelBody.error || `Label lookup failed (${labelRes.status})`);
+      renderLabel(labelBody);
+      qaBox.style.display = "block";
+    } catch (err) {
+      fdaStatus.textContent = `openFDA lookup failed: ${err.message}`;
+    }
+  }
+
+  function renderRecalls(data, batch) {
+    if (!data) return;
+    const [label, cls] = {
+      batch_recalled: [`BATCH RECALLED`, "recalled"],
+      recalls_exist: [`RECALLS EXIST (${data.recall_count})`, "recalls"],
+      no_recalls_found: ["NO RECALLS FOUND", "norecalls"],
+    }[data.status];
+    recallBadges.appendChild(el("span", label, `badge ${cls}`));
+
+    for (const r of data.recalls.slice(0, 20)) {
+      const item = el("div", undefined, "recall-item");
+      if (r.batch_match) item.appendChild(el("div", `BATCH MATCH: ${batch} is listed in this recall`, "match"));
+      item.appendChild(el("div", `${r.date || "?"} · ${r.classification || "?"} · ${r.status || "?"} · ${r.recall_number || ""}`));
+      item.appendChild(el("div", r.reason || ""));
+      item.appendChild(el("div", `Lots: ${(r.lots || "not listed").slice(0, 300)}`, "muted"));
+      recallList.appendChild(item);
+    }
+    if (data.recalls.length) recallDetails.style.display = "block";
+  }
+
+  function renderLabel(label) {
+    const names = [label.brand_name, label.generic_name].filter(Boolean).join(" · ");
+    fdaLabel.appendChild(el("div", names, "fda-name"));
+    fdaLabel.appendChild(el("div", `${label.manufacturer || "Unknown manufacturer"} · set_id ${label.set_id}`, "muted"));
+
+    const storage = label.sections.storage_and_handling;
+    const excerpt = el("p", undefined, "fda-excerpt");
+    excerpt.appendChild(el("b", "Storage & handling: "));
+    excerpt.appendChild(document.createTextNode(storage ? storage.slice(0, 500) + (storage.length > 500 ? "…" : "") : "not in label"));
+    fdaLabel.appendChild(excerpt);
+
+    const found = Object.keys(label.sections).map((s) => s.replace(/_/g, " "));
+    fdaLabel.appendChild(el("p", `Sections available: ${found.join(", ")}`, "muted"));
+  }
+
+  qaForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const question = qaInput.value.trim();
+    if (!question || !currentProduct) return;
+    qaButton.disabled = true;
+    qaAnswer.innerHTML = "";
+    qaAnswer.appendChild(el("div", "Reading the label…", "muted"));
+    try {
+      const res = await fetch("/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ product_name: currentProduct, question }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+      qaAnswer.innerHTML = "";
+      qaAnswer.appendChild(el("div", data.answer));
+      for (const c of data.citations) {
+        const cite = el("div", undefined, "citation");
+        cite.appendChild(el("b", `[${c.n}] ${c.section.replace(/_/g, " ")}: `));
+        cite.appendChild(document.createTextNode(c.text.slice(0, 280) + (c.text.length > 280 ? "…" : "")));
+        qaAnswer.appendChild(cite);
+      }
+    } catch (err) {
+      qaAnswer.innerHTML = "";
+      qaAnswer.appendChild(el("div", `Could not get an answer: ${err.message}`));
+    } finally {
+      qaButton.disabled = false;
+    }
+  });
 </script>
 </body>
 </html>
